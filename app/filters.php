@@ -11,11 +11,16 @@
 |
 */
 
+Route::filter('sesionHas',function(){
+   if(!Session::has('tester')){
+       return Redirect::guest('/');
+   }
+});
+
 App::before(function($request)
 {
 	//
 });
-
 
 App::after(function($request, $response)
 {

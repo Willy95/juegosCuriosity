@@ -11,7 +11,7 @@
 @section('juego')
 
           <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->
-          <div id="zona-play">
+          <div id="zona-play" hidden="hidden">
             <div class="row">
               <div class="col-md-10 text-left">
                 <h4><b id="act-reglas">Selecciona los numeros de menor a mayor </b></h4>

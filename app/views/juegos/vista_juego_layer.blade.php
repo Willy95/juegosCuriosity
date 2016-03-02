@@ -104,7 +104,7 @@
                     </div>
                     <div class='col-md-7' id='objetivo'>
                       <h2>Objetivo de la actividad</h2>
-                      <p id="juego-objetivo"></p>
+                      <p id="juego-objetivo" class="text-justify"></p>
                       <div class="text-right boton-comezar">
                         <button type="button" class="btn btn-info btn-lg" id="btn-comenzar">
                           Comenzar Actividad
@@ -130,11 +130,11 @@
     </div>
     <div class="col-md-8 text-right">
       <div class="actividadBotones">
-        <a target="_blank" class="btn btn-default btnDownloadPDF">
+        <a target="_blank" class="btn btn-default btnDownloadPDF" disabled>
           <span class="fa fa-download"></span>&nbsp;
           <b>Guía de estudio PDF</b>
         </a>
-        <button type="button" class="btn btn-default btnVideo">
+        <button type="button" class="btn btn-default btnVideo" disabled>
           <span class="fa fa-youtube-play"></span>&nbsp;
           <b>Ver explicación en video</b>
         </button>

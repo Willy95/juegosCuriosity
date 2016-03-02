@@ -73,7 +73,12 @@ button{
 }
 
 .login-forgot{
-  margin-top: 10px;
-  letter-spacing: 1.1px;
-  font-size: 1.3em;
+  margin-top: 15px;
+  letter-spacing: 1px;
+  font-size: 1.1em;
+}
+
+.login-forgot > a{
+  color: rgb(142, 142, 142);
+  font-weight: bold;
 }

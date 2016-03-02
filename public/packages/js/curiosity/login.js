@@ -40,6 +40,7 @@ function __init(){
         function show_second_log(foto){
             $primer_log.hide();
             $segundo_log.show();
+            $("#boxButtonsIn").removeAttr('hidden');
             $('#login-next').hide();
             $('#login-reg').hide();
             $('#login-int').show();
@@ -79,7 +80,7 @@ function __init(){
                 show_second_log('/packages/images/avatars/gato.jpg');
               }
               else{
-                notificaciones("El nombre de usuario '"+$username.val()+"' no existe.", 'information');
+                $curiosity.noty("El nombre de usuario '"+$username.val()+"' no existe.", 'information');
               }
             })
             .fail(function(error) {
@@ -87,7 +88,7 @@ function __init(){
             });
           }
           else{
-            notificaciones("Ingrese un nombre de usuario",'warning');
+            $curiosity.noty("Ingrese un nombre de usuario",'warning');            
           }
         }
 
@@ -117,20 +118,6 @@ function __init(){
           }
         });
 
-        // Funcion de Notificacion estandar para el usuario
-        function notificaciones(mensaje, tipo){
-          var n = noty({
-              text        : mensaje,
-              type        : tipo,
-              dismissQueue: true,
-              timeout     : 3000,
-              closeWith   : ['click'],
-              layout      : 'bottomRight',
-              theme       : 'defaultTheme',
-              maxVisible  : 10
-           });
-        }
-
     /* Declaramos nuevamente otra opcion de logeo a traves
     un click en el boton de entrar*/
     $('#login-int').on('click',buscarUsuario);
@@ -149,19 +136,20 @@ function __init(){
         data: {data: datos}
       })
       .done(function(response) {
+        // console.log(response);
         if($.isPlainObject(response)){
           $.each(response,function(index,value){
             $.each(value,function(i,message){
-              notificaciones(message, 'warning');
+              $curiosity.noty(message, 'warning');
             });
           });
         }
         else if(response == 'success'){
-          notificaciones('Bienvenido a Juegos Curiosity!!', 'success');
+          $curiosity.noty('Bienvenido a Juegos Curiosity!!', 'success');
           window.location.href = '/sumas-restas';
         }
         else{
-          notificaciones('La contraseña de usuario no es valida', 'information');
+          $curiosity.noty('La contraseña de usuario no es valida', 'information');
         }
       })
       .fail(function(error) {

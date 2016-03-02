@@ -35,16 +35,6 @@
   </div>
 </div>
 
-<!-- Alerta -->
-<br><br><br>
-<div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <strong>Bienvenido Curiosity.com.mx</strong><br>
-  El sitio se encuentra en construcción constante.
-</div>
-
 <section class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
@@ -63,7 +53,7 @@
               </div>
             </div>
 
-            <div class="form-group" id="input-pass">
+            <div class="form-group" id="input-pass" hidden="hidden">
               <div class="input-group">
                 <span class="input-group-addon" id="login-icon-pass">
                   <span class="fa fa-lock"></span>
@@ -80,14 +70,19 @@
         <button type="button" name="login-reg" class="btn btn-warning btn-block" id="login-reg">
           Registrarme
         </button>
-        <button type="button" name="login-int" class="btn btn-success btn-block" id="login-int">
-          Entrar
-        </button>
-        <button type="button" name="login-back" class="btn btn-danger btn-block" id="login-back">
-          Regresar
-        </button>
-        <div class="text-center login-forgot">
-          <a href="javascript:void(0)">Olvide mi usuario y/o contraseña</a>
+        <div hidden="hidden" id="boxButtonsIn">
+          <button type="button" name="login-int" class="btn btn-success btn-block" id="login-int">
+            Entrar
+          </button>
+          <button type="button" name="login-back" class="btn btn-danger btn-block" id="login-back">
+            Regresar
+          </button>
+        </div>
+        <div class="text-center login-forgot" hidden="hidden">
+          <a href="javascript:void(0)">
+            Olvide mi usuario y/o contraseña
+            <li class="fa fa-question-circle"></li>
+          </a>
         </div>
       </div>
     </div>
@@ -101,5 +96,6 @@
 {{HTML::script('/packages/js/libs/noty/layouts/bottomRight.js')}}
 {{HTML::script('/packages/js/libs/noty/layouts/topRight.js')}}
 {{HTML::script('/packages/js/curiosity/login.js')}}
+{{HTML::script('/packages/js/curiosity/curiosity.js')}}
 </body>
 </html>

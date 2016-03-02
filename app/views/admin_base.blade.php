@@ -58,7 +58,7 @@
                       </a>
                     </div>
                     <div class="pull-right">
-                      <a href="/" class="btn btn-danger">
+                      <a href="/logout" class="btn btn-danger">
                         <span class="fa fa-arrow-circle-right"></span>
                         Cerrar Sesión
                       </a>
@@ -105,7 +105,7 @@
             </li>
 
             <li class="visible-xs">
-              <a href="/">
+              <a href="/logout">
                 <i class="fa fa-arrow-circle-right"></i>
                 <span>Salir</span>
               </a>

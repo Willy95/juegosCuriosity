@@ -32,14 +32,14 @@ class loginController extends BaseController
           }
           else
           {
-              /*Vemos si las credenciales son correctas*/
-              if(Input::get('data.username') == "tester-curiosity" &&
-                 Input::get('data.password') == "teamcuriosity"){
-                return Response::json(array(0=>'success'));
-              }
-              else{
+            if(Input::get('data.username') == "tester-curiosity" &&
+               Input::get('data.password') == "teamcuriosity"){
+                 Session::put('tester', 'curiosity');
+                 return Response::json(array(0=>'success'));
+            }
+            else{
                 return Response::json(array(0=>'error'));;
-              }
+            }
           }
         }
       else{
@@ -47,7 +47,8 @@ class loginController extends BaseController
       }
     }
 
-    public function salir(){        
+    public function salir(){
+        Session::flush();
         return Redirect::to('/');
     }
 

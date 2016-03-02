@@ -15,12 +15,16 @@
 Route::get('/', 'loginController@verPagina');
 Route::match(array('GET','POST'),'/login', 'loginController@verPagina');
 Route::post('/verificarUsuario', 'loginController@verificarUsuario');
-/* ------------------------------------------------- */
-Route::get('/menor-mayor', function(){
-  return View::make('juegos.de-menor-a-mayor');
+Route::get('/logout', 'loginController@salir');
+
+Route::group(array('before' => 'sesionHas'), function(){
+  /* ------------------------------------------------- */
+  Route::get('/menor-mayor', function(){
+    return View::make('juegos.de-menor-a-mayor');
+  });
+  /* ------------------------------------------------- */
+  Route::get('/sumas-restas', function(){
+    return View::make('juegos.sumas-restas');
+  });
+  /* ------------------------------------------------- */
 });
-/* ------------------------------------------------- */
-Route::get('/sumas-restas', function(){
-  return View::make('juegos.sumas-restas');
-});
-/* ------------------------------------------------- */

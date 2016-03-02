@@ -207,7 +207,8 @@ function calcOperacion_2(){
         // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
         puntosMaximos = puntajeNow;
         // Cambiamos el puntaje maximo en pantalla
-        $("#num-max-pts").html(puntosMaximos + " pts");
+        $juego.setPuntosMaxInicio(puntosMaximos);
+        $juego.setEficienciaMaxInicio(eficiencia);
       }
       // // mostramos alerta en pantalla
       $juego.modal.puntuacion.mostrar(puntosMaximos, eficiencia, puntajeNow);

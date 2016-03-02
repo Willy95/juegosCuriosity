@@ -1,4 +1,4 @@
-﻿$(document).on("ready",function() {
+$(document).on("ready",function() {
 
   var objetivo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugiat soluta, saepe asperiores odio magni eos. Autem repudiandae earum consequatur dolorum molestias odio, laborum veniam voluptate nisi. Sint animi dolore, laborum nisi reiciendis nobis voluptas.";
 
@@ -25,18 +25,26 @@
   var puntajeNow = 0;
   // Variable para almacenar la cantidad de aciertos
   var aciertos = 0;
-  // Variable para guardar la cantidad de aciertos
+  // Variable para guardar la cantidad de aciertos continuos
   var continuo = 0;
   // Valor que tendran los puntos al iniciar
   var valorPts = 100;
   //variable gloabla para almacenar los colores de fondo para los contenedores de los numeros
-  var colores = ["#00f41c","#f80000","#08e1f4","#9900ff","#fa8700","#eee304","#ff00af","#dd1579","#00ff81"];
+  var colores = ["#00f41c","#f80000","#08e1f4","#9900ff","#fa6900","#ee047b","#d03eb9","#009c72","#145394"];
   // variable glabal para que nos permitira determinar cuantos opciones se mostrarán en el area de juego
   var opciones = 3;// se mostraran 3 opciones al inicio
   //funcion para determinar el nivel del juego
-  var nivel =0;
+  var nivel=0;
   //la variable de wily
 	var maxPtsTemp;
+  // Variable para controlar el total de aciertos por nivel
+  var aciertosCount = 0;
+  // Variable para controlar el total de errores por nivel
+  var erroresCount = 0;
+  // Arreglo para el calculo de la eficiencia total
+  var eficienciaSuma = new Array();
+  // Variable para guardar la eficiencia obtenida
+  var eficNow = 0;
 // ---------------------------------------------------------------------------------------------
 // PETICIONES A BASE DE DATOS
 // ---------------------------------------------------------------------------------------------
@@ -132,6 +140,17 @@ $("#zona-play").hide();
 
 	}
 //------------------------------------------------------------------------------------------------//
+// Funcion para obtener la eficiencia total obtenida
+function getEficienciaNow(){
+  var valor = 0;
+  var longitud = 0;
+  $.each(eficienciaSuma, function(index, el) {
+    valor += el;
+    longitud = index;
+  });
+  valor = Math.round(valor / (longitud + 1));
+  return valor;
+}
 //------------------------------funcion para finalizar el juego----------------------------------//
  function finishGame()
  {
@@ -140,6 +159,7 @@ $("#zona-play").hide();
 		$tiempo=60;//reiniciar tiempo
 		continuo=0;//reiniciar continuos
 		nivel=0;
+    valorPts = 100;
 		opciones=3;//reiniciar número de opciones a 3
 		$("#temp-count").text($tiempo + "seg");
 	    // Guardamos el puntaje mayor actual en variable temporal para no perder la catidad de puntos maximos en caso de que este puntaje sea superado
@@ -151,7 +171,8 @@ $("#zona-play").hide();
         // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
         puntosMaximos = maxPtsTemp;
         // Cambiamos el puntaje maximo en pantalla
-        $("#num-max-pts").html(puntosMaximos + " pts");
+        $juego.setPuntosMaxInicio(puntosMaximos);
+        $juego.setEficienciaMaxInicio(eficNow);
         }
 	 	$("#zona-play").toggle();//desaparecer zona juego
 		$("#zona-obj").toggle();//aparecer zona del objetivo
@@ -164,11 +185,13 @@ function cambiarSeg()
 	$("#temp-count").text($tiempo + "seg");
 	if($tiempo===0)
 	{
-
+    eficNow = getEficienciaNow();
 		finishGame();
     // // mostramos alerta en pantalla
-    $juego.modal.puntuacion.mostrar(puntosMaximos, 0, puntajeNow);
+    $juego.modal.puntuacion.mostrar(puntosMaximos, eficNow, puntajeNow);
 	  puntajeNow=0;
+    eficNow=0;
+    eficienciaSuma = new Array();
 	}
 
 }
@@ -230,6 +253,11 @@ function numeroAleatorio(num)
 					swal("Felicitaciones","Haz logrado vencer los 11 niveles del juego y finalizarlo");
 				}
 				else
+          var clicks = erroresCount + aciertosCount;
+          var eficNivel=Math.round((aciertosCount*100)/clicks);
+          eficienciaSuma.push(eficNivel);
+          erroresCount=0;
+          aciertosCount=0;
 					createOptions(opciones);//subir de nivel metodo para crear más opciones
 			}
 			setTimeout(function(){// los números se generan des pues de 7 milesimas de segundo
@@ -253,6 +281,8 @@ function numeroAleatorio(num)
 // FUNCION A REALIZAR EN CADA OPCION SELECCIONADA ERRONEAMENRE
 // -----------------------------------------------------
   function setError(){
+    // Contabilizamos el error para el calculo de la eficiencia
+    erroresCount += 1;
     // regresamos la cantidad de aciertos continuos a cero
     continuo = 0;
     // Regresamos el valor de los puntos por acirto a 100
@@ -275,6 +305,10 @@ function numeroAleatorio(num)
 // FUNCION A REALIZAR EN CADA OPCION SELECCIONADA CORRECTAMENTE
 // ---------------------------------------------------------------------------------------------
   function setCorrecto(){
+    // Contabilizamos el acierto para el calculo de la eficiencia
+    aciertosCount += 1;
+    // Mostramos el puntaje obtenido en pantalla
+    setCombo(valorPts);
     // sumamos el puntaje
     $("#countPuntaje").text(puntajeNow += valorPts);
     // Sumamos +1 a los aciertos continuos que llevamos
@@ -299,25 +333,17 @@ function determinarCombo(){
   // esto nos indica que efectivamente se tienen aciertos seguidos
   if(continuo !== 0){
     // si la cantidad de aciertos continuos es igual a 5 se asigna un nuevo valor a los puntos por acierto
-    if(continuo == 5){
+    if(continuo == 10){
       valorPts = 150;
-	  setCombo(150);
     }
     // si la cantidad de aciertos continuos es igual a 10 se asigna un nuevo valor a los puntos por acierto
-    if(continuo == 10){
+    if(continuo == 25){
       valorPts = 250;
-	  setCombo(250);
     }
     // si la cantidad de aciertos continuos es igual a 15 se asigna un nuevo valor a los puntos por acierto
-    if(continuo == 15){
+    if(continuo == 40){
       valorPts = 500;
-	  setCombo(500);
     }
-	if(continuo == 20){
-		valorPts =1000;
-		setCombo(1000);
-		continuo=0;//Reiniciar la variable continuos para poder generar más combos
-	}
   }
 }
 // 	------------------------Fin de gestion del dom--------------------------

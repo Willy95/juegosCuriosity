@@ -13,7 +13,7 @@
 
 @section('juego')
           <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->
-          <div id="zona-play">
+          <div id="zona-play" hidden="hidden">
             <div class="row">
               <div class="col-md-12 text-right">
                 <div class="temp">
@@ -28,13 +28,13 @@
               </div> -->
             </div>
             <div class="row">
-              <div class="col-md-4 valor-resp">
+              <div class="col-xs-6 col-md-4 valor-resp">
                 <div id="resp-1"></div>
               </div>
-              <div class="col-md-4 valor-resp">
+              <div class="col-xs-6 col-md-4 valor-resp">
                 <div id="resp-igual">=</div>
               </div>
-              <div class="col-md-4 valor-resp">
+              <div class="col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-0 valor-resp">
                 <div id="resp-2"></div>
               </div>
             </div>

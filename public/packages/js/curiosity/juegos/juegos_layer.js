@@ -7,8 +7,8 @@ var $juego = {
                 $("#modal-eficiencia-max").html("<b>Eficiencia Máxima : </b>" +eficMax+"%");
                 $("#modal-puntos-now").html("<b>Puntaje Obtenido : </b>"+ptsObt+" Pts");
                 $("#modal-eficiencia-now").html("<b>Eficiencia Obtenida : </b>"+eficMax+"%");
-                $(".btnVideo").removeAttr('disabled');
-                $(".btnDownloadPDF").removeAttr('disabled');
+                // $(".btnVideo").removeAttr('disabled');
+                // $(".btnDownloadPDF").removeAttr('disabled');
                 $("#modalPrueba").modal('show');
             }
         }
