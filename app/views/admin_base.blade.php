@@ -104,6 +104,13 @@
               </a>
             </li>
 
+             <li id="li-tablas">
+              <a href="/tablas">
+                <i class="fa fa-trophy"></i>
+                <span>Tablas</span>
+              </a>
+            </li>
+
             <li class="visible-xs">
               <a href="/">
                 <i class="fa fa-arrow-circle-right"></i>

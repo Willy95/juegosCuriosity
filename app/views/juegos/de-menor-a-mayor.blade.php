@@ -15,8 +15,6 @@
             <div class="row">
               <div class="col-md-10 text-left">
                 <h4><b id="act-reglas">Selecciona los numeros de menor a mayor </b></h4>
-                <hr>
-                <h5>Haciendo cambios el roger</h5>
               </div>
               <div class="col-md-2 text-right">
                 <div class="temp">
@@ -26,7 +24,7 @@
               </div>
             </div>
             <div id="game">
-		        </div>
+            </div>
             <div class="row">
               <div class="col-xs-12">
                 <div class="zona-puntaje">

@@ -1,0 +1,110 @@
+#zona-play
+{
+    min-height: 300px;
+}
+.zona-puntaje
+{
+    position: relative;
+    margin-top: calc(30% - 1%);
+}
+#game {
+	padding-left: 10%;
+    padding-right: 10%;
+}
+.tables
+{
+    background: #269ec3;
+    padding-bottom: 0!important;
+}
+.tables>.row>.col-md-6 {
+	padding-left: 0!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+}
+.tables>.row {
+    padding-bottom: 0!important;
+}
+
+.tables p
+{
+    display: inline;
+}
+
+.n1,.n2,.res,.equal
+{
+    font-weight: bold;
+    font-size: 1.8em;
+    font-family: tahoma;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: inline-block;
+    padding: 3%;
+    margin-top: 0px!important;
+    text-align: center;
+    width: 20px!important;
+    height: 20px!important;
+}
+
+div[class*="tb"]{
+
+    padding-left:  1%;
+    height: 100%!important;
+}
+div.active[class*="tb"]
+{
+    background: #266c5e;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+}
+.tb-respuestas
+{
+    margin-left: 0!important;
+    padding-right: 0!important;
+}
+.tb-respuestas>.zona-numeros {
+	max-width: 100%!important;
+    max-height: 100%!important;
+    padding-left: 15%;
+}
+.tb-respuestas>.zona-numeros>h2 {
+	display: inline-block;
+    padding: 10px!important;
+    border-radius: 15%;
+    margin: 4px;
+    font-size: 3em;
+    font-weight: bold;
+    background: #fff;
+    color: blue;
+    cursor: pointer;
+}
+.tb-respuestas {
+	padding-left: 0!important;
+    padding-bottom: 0!important;
+    margin-bottom: 0!important
+}
+.tb-respuestas>.zona-numeros>h2:hover {
+    transition: 1s;
+    transform: scale(1.1);
+    z-index: 100;
+    color: green;
+
+}
+.tb-respuestas>.zona-respuestas {
+	max-width: 100%!important;
+    max-height: 100%!important;
+    padding-left: 12%;
+    border-bottom: 22px solid #2757a3;
+    border-top: 22px solid #2757a3;
+    margin-left: 0!important;
+    margin-bottom: 0!important;
+}
+.tb-respuestas>.zona-respuestas>h1 {
+	background: #2757a3;
+    padding: 15%;
+    display: inline-block;
+    margin-left: 10%;
+    border-radius: 10%;
+}
+
+
