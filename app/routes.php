@@ -24,3 +24,7 @@ Route::get('/sumas-restas', function(){
   return View::make('juegos.sumas-restas');
 });
 /* ------------------------------------------------- */
+Route::get('/tablas', function(){
+    return View::make('juegos.tablas');
+});
+/* ------------------------------------------------- */

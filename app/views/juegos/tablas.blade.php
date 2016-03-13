@@ -15,12 +15,12 @@
           <div id="zona-play">
             <div class="row">
               <div class="col-md-10">
-                <h4><b id="act-reglas">Selecciona el numeto correcto</b></h4>
+                <h4><b id="act-reglas">Selecciona el numero correcto</b></h4>
               </div>
               <div class="col-md-2 text-right">
                 <div class="temp">
                   <h5><b>Tiempo Restante</b></h5>
-                  <h3 id="temp-count"></h3>
+                  <h3 id="temp-count"> 0s</h3>
                 </div>
               </div>
             </div>
@@ -28,46 +28,54 @@
                 <div class="tables col-md-12">
                    <div class="row">
                      <div class="col-md-6">
-                        <div class="tb1 active text-justify">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res">&#63;</p>
-                        </div>
-                        <div class="tb2">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb3">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb4">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb5">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb6">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb7">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb8">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb9">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2"></p> <p class="equal">=</p> <p class="res"></p>
-                        </div>
-                        <div class="tb10">
-                            <i class="fa fa-check fa-2x"></i>
-                            <p class="n1"></p> <i class="fa fa-remove fa-2x"></i> <p class="n2" style="margin-left:1%!important"></p> <p class="equal">=</p> <p class="res" style=""></p>
-                        </div>
+                        <table class="table">
+                           <tbody>
+                                <tr class="tb activ text-justify">
+                                    <td><i class="fa check fa-square-o fa-2x"></i></td>
+                                    <td><p class="n1"></p></td><td><i class="fa fa-remove"></i></td><td><p class="n2"></p></td><td><p class="equal">=</p></td><td> <p class="res">&#63;</p></td>
+                                 </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o fa-2x"></i></td>
+                                    <td><p class="n1"></p></td>
+                                    <td><i class="fa fa-remove"></i></td>
+                                    <td><p class="n2"></p></td>
+                                    <td><p class="equal">=</p></td>
+                                    <td><p class="res"></p></td>
+                                </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o fa-2x"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td><td> <p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                                <tr class="tb">
+                                    <td><i class="fa check fa-square-o"></i></td>
+                                    <td><p class="n1"></p></td> <td><i class="fa fa-remove"></i></td><td> <p class="n2"></p></td> <td><p class="equal">=</p></td><td> <p class="res"></p></td>
+                               </tr>
+                            </tbody>
+                        </table>
                      </div>
                      <div class="col-md-6 tb-respuestas">
                          <div class="row zona-numeros">
@@ -76,13 +84,29 @@
                             <h2>5</h2><h2>6</h2><h2>7</h2><h2>8</h2><h2>9</h2>
                          </div>
                          <div class="row zona-respuestas">
-                             <h1 class="n-res1"></h1>
-                             <h1 class="n-res2 hidden"></h1>
+                             <div class="advice text-center col-md-12"><p>Arrastra la respuesta aquí</p> <i class="fa fa-hand-o-down"></i></div>
+                             <h1 class="n-res1 col-md-3 center-cont"></h1>
+                             <h1 class="n-res2 col-md-3 hidden"></h1>
                          </div>
                      </div>
                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="niveles col-md-4">
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                    <i class="fa fa-star fa-2x"></i>
+                </div>
+            </div>
+            <img src="{{asset('packages/images/games/start.png')}}" class="img-responsive img-start"/>
+            <img src="{{asset('packages/images/games/incorrecto.png')}}" class="img-responsive img-incorrect"/>
             <div class="row">
               <div class="col-xs-12">
                 <div class="zona-puntaje">
