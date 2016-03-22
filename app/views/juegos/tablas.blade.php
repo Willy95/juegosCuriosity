@@ -12,6 +12,7 @@
 @section('juego')
 
           <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->
+          <audio src="" id="sound"></audio>
           <div id="zona-play">
             <div class="row">
               <div class="col-md-10">
@@ -92,7 +93,7 @@
                    </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row stars">
                 <div class="niveles col-md-4">
                     <i class="fa fa-star fa-2x"></i>
                     <i class="fa fa-star fa-2x"></i>

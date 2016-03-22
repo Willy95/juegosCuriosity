@@ -35,6 +35,7 @@ $(document).ready(function(){
     },
     verificar:function($n){//funcion que verifica si el resultado seleccionado por el usuario es correcto
         if($n==$(this.$res[this.pos]).data("valor")){// si el numero que selecciono es correcto regresamos true  si no false
+
             $(this.$res[this.pos]).parent().parent().removeClass("activ");
             $(this.$res[this.pos]).parent().parent().find("i").removeClass("fa-square-o");
             $(this.$res[this.pos]).parent().parent().find("i").addClass("fa-check");
@@ -46,6 +47,10 @@ $(document).ready(function(){
                 this.pos=0;
                 this.clearRes();
                 this.generarTabla();
+            }
+            if(this.nivel>9)
+            {
+                game.finishGame();
             }
             $(this.$res[this.pos]).parent().parent().addClass("activ");
             this.lenghtRes();
@@ -77,6 +82,7 @@ $(document).ready(function(){
         this.nivel=1;
         this.$res.parent().parent().removeClass("activ");
         this.$res.parent().parent().first().addClass("activ");
+        this.$niveles.css("color","#fff");
     },
     clearRes:function(){//funcion auxiliar para reinciar las respuestas una vez completada la tabla de multiplicar
         this.$res.text("");
@@ -150,7 +156,7 @@ $(document).ready(function(){
             tabla.generarTabla();
             $(".n-res2").hide();
             game.scrollMove(75);
-            game.cantTemp=10;
+            game.cantTemp=180;
             tabla.$zonaRes.hide();
             game.interval = setInterval(game.restarTiempo, 1000);
             //interval = setInterval(changeTime,1000);
@@ -160,7 +166,7 @@ $(document).ready(function(){
             game.cantTemp--;
             game.$temp.text(game.cantTemp);
             if(game.cantTemp===0){
-                game.finishGame();
+               //game.finishGame();
             }
 
         },
@@ -169,11 +175,13 @@ $(document).ready(function(){
              if(game.puntajeNow>game.puntosMaximos){
                  game.puntosMaximos=game.puntajeNow;
              }
-             $juego.modal.puntuacion.mostrar(game.puntosMaximos, eficiencia=1, game.puntajeNow);
+             game.eficiencia= Math.round(game.totAciertos*100)/game.intentos;
+             $juego.modal.puntuacion.mostrar(game.puntosMaximos, game.eficiencia, game.puntajeNow);
              $("#zona-play").hide();
              $("#zona-obj").show();
              tabla.restorePlay();
              game.intentos=0;
+             game.totAciertos=0;
         },
         setCorrecto: function (){
             // sumamos el puntaje
@@ -187,7 +195,7 @@ $(document).ready(function(){
               // eliminamos el contenido del div con la clase verific el cual contenia una palomita
             $(".verific").empty();
             // Sumamos el acierto
-            this.totAciertos += 1;
+            game.totAciertos += 1;
             // Establecemos en cuantos milisegundos se realizará la funcion
             }, 600);
         },
@@ -226,6 +234,7 @@ $(document).ready(function(){
         helper:'clone',
         start:function(){
            game.showResponse('fast');
+           game.intentos++;
         },
         stop:function(){
             if(tabla.lenghtRes()>1){
@@ -274,7 +283,6 @@ $(document).ready(function(){
   /*Establecer el metodo a los contenedores de respuestas pera que estos capturen las opciones arrastradas por el usua*/
     $(".zona-respuestas>h1").droppable({
         drop:function(ev,ui){
-            game.intentos++;
             tabla.capturado=true;
             var dropped = ui.draggable.clone();//clonamos el elemento arrastrado
             $(this).append(dropped);// y este elemento arrastrado se lo aplicamos al contenido
