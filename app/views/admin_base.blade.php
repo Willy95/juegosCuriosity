@@ -104,10 +104,10 @@
               </a>
             </li>
 
-             <li id="li-tablas">
+            <li id="li-tablas">
               <a href="/tablas">
                 <i class="fa fa-trophy"></i>
-                <span>Tablas</span>
+                <span>Tablas de Multiplicar</span>
               </a>
             </li>
 

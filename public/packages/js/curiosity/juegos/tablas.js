@@ -25,12 +25,23 @@ $(document).ready(function(){
      $zonaRes:$(),//Zona donde el usuario arrastra las opciones seleccionadas
      $res:$(),//Elemento del Dom donde se encuentra el resultado de la tabla este numero se genera de la multiplicación de los numeros ya menciondao $n1 y $n2
      capturado:false,//variable de auxiliar para saber si la respuesta arrastrada fue capturada en la zona de respuestas
-     generarTabla : function(){// se genera la tabla de multiplicar segun su nivel
+     generarTabla : function(dificult){// se genera la tabla de multiplicar segun su nivel
+      var numeros=[1,2,3,4,5,6,7,8,9,10];
         for(var i=0;i<this.$n1.length;i++){
             this.$n1.text(this.nivel);
-            $(this.$n2[i]).data("valor",i+1);
-            $(this.$n2[i]).text(i+1);
-            $(this.$res[i]).data("valor",this.nivel*(i+1));
+            if(dificult){
+                var n_random = this.valorRandom(numeros.length-1);
+                numero = numeros[n_random];
+                console.log(numeros[n_random]+" "+n_random);
+                numeros.splice(n_random,1);
+                $(this.$n2[i]).data("valor",numero);
+                $(this.$n2[i]).text(numero);
+                $(this.$res[i]).data("valor",this.nivel*(numero));
+            }else{
+                $(this.$n2[i]).data("valor",i+1);
+                $(this.$n2[i]).text(i+1);
+                $(this.$res[i]).data("valor",this.nivel*(i+1));
+            }
         }
     },
     verificar:function($n){//funcion que verifica si el resultado seleccionado por el usuario es correcto
@@ -40,23 +51,36 @@ $(document).ready(function(){
             $(this.$res[this.pos]).parent().parent().find("i").removeClass("fa-square-o");
             $(this.$res[this.pos]).parent().parent().find("i").addClass("fa-check");
             $(this.$res[this.pos]).text($(this.$res[this.pos]).data("valor"));
+            $(this.$niveles[this.pos]).css("color","yellow")
             this.pos++;
+            var nivelTem=10;
+            document.getElementById('sound-correct1').play();
             if(this.pos>9){
-                $(this.$niveles[this.nivel-1]).css("color","yellow")
+              game.finishGame();
+              /*  $(this.$niveles[this.nivel-1]).css("color","yellow")
+                nivelTem= this.nivel;
                 this.nivel++;
                 this.pos=0;
                 this.clearRes();
                 this.generarTabla();
             }
-            if(this.nivel>9)
+            if(this.nivel>this.nivelTem)
             {
                 game.finishGame();
+            }*/
             }
             $(this.$res[this.pos]).parent().parent().addClass("activ");
             this.lenghtRes();
             return true;
         }
-        else return false;
+        else{
+            document.getElementById('sound-error').play();
+            return false;
+        }
+    },
+    valorRandom: function (numMayor){
+      var numero =  Math.round((Math.random() * numMayor));
+      return numero;
     },
     lenghtRes:function()//funciton auxiliar que nos ayuda a saber la lonjtud de la respuesta
     {
@@ -104,7 +128,7 @@ $(document).ready(function(){
           // Guardamos el puntaje maximo del usuario en una variable para uso global
           puntosMaximos: 0,
           // Establece la cantidad de segundos de inicio
-          cantTemp: 03,
+          cantTemp: 0,
           // Declaramos la variable de forma globar a utilizar en el setInterval(intervalo de tiempo)
           interval:0,
           // Declaramos la variable para uso de puntaje
@@ -144,20 +168,23 @@ $(document).ready(function(){
               // Establecemos en cuantos milisegundos se realizará la funcion
             }, 600);
         },
-        Comenzar: function(){//funcion displarada al comenzar el juego aquí se iniciar el tiempo y se mustra la zona del juego
-            $("#zona-play").show();
-            $("#zona-obj").hide();
+        startGame: function(dificult){//funcion displarada al comenzar el juego aquí se iniciar el tiempo y se mustra la zona del juego
             //establecemos propiedades al objeto tabla
             tabla.$n1=$(".n1");
             tabla.$n2=$(".n2");
             tabla.$res=$(".res");
             tabla.$zonaRes =$(".zona-respuestas>h1");
+            tabla.$zonaRes.empty();
             tabla.$niveles=$(".niveles>i");
-            tabla.generarTabla();
+            tabla.generarTabla(dificult);
+            tabla.capturado=false;
             $(".n-res2").hide();
-            game.scrollMove(75);
-            game.cantTemp=180;
+            $("html,body").animate({scrollTop:200},'slow');
+            game.cantTemp=60;
             tabla.$zonaRes.hide();
+            tabla.$zonaRes.droppable('option','disabled',false);
+            tabla.res="";
+            tabla.lenghtRes();
             game.interval = setInterval(game.restarTiempo, 1000);
             //interval = setInterval(changeTime,1000);
         },
@@ -166,9 +193,8 @@ $(document).ready(function(){
             game.cantTemp--;
             game.$temp.text(game.cantTemp);
             if(game.cantTemp===0){
-               //game.finishGame();
+               game.finishGame();
             }
-
         },
         finishGame:function(){
              clearInterval(game.interval);
@@ -178,6 +204,7 @@ $(document).ready(function(){
              game.eficiencia= Math.round(game.totAciertos*100)/game.intentos;
              $juego.modal.puntuacion.mostrar(game.puntosMaximos, game.eficiencia, game.puntajeNow);
              $("#zona-play").hide();
+             $("#zona-play>.row").css({"-webkit-filter":"blur(10px)"});
              $("#zona-obj").show();
              tabla.restorePlay();
              game.intentos=0;
@@ -228,7 +255,16 @@ $(document).ready(function(){
 
     };
   /*--------------------------------------------------------------------*/
-      $juego.boton.comenzar.setFuncion(game.Comenzar);
+      $juego.boton.comenzar.setFuncion(function(){
+            $("#zona-obj").hide('slow');
+            $("#zona-play").show('slow');
+            $("#zona-play>.modal-instrucciones-game").show('slow');
+            $("#zona-play>.bur").show('slow');
+            $(".container-select-table").hide();
+            $(".title-instrucciones").show();
+            $(".instrucciones").show();
+            $(".btn-instrucciones").children().toggle();
+      });
  /*----------------------------------------------------------------------*/
     $(".zona-numeros>h2").draggable({
         helper:'clone',
@@ -296,5 +332,40 @@ $(document).ready(function(){
     });
 
 // ----------------------------------------------------------------------------
-
+//boton dentro de las instrucciones para ir a la siguiente pestaña
+  $("#btn-advice-next").click(function(){
+    $(".title-instrucciones").hide('slow');
+    $(".instrucciones").hide('slow');
+    $(".container-select-table").show('slow');
+    $(".btn-instrucciones").children().toggle();
+  });
+  $("#zona-play").on("click",".btn-comenzar",function(){
+    $("#zona-play>.row").css({"-webkit-filter":"blur(0px)"});
+    $(".modal-instrucciones-game").hide();
+    $(".modal-instrucciones-game>.container-select-table").hide();
+    $(".modal-instrucciones-game>.title-instrucciones").show();
+    $(".modal-instrucciones-game>.instrucciones").show();
+    $(".bur").hide();
+    $.each($(".tables-levels>li"),function(i,v){
+      if($(this).hasClass("active")){
+        tabla.nivel=i+1;
+      }
+    });
+    if($(".dificult-list>li").first().hasClass("active")){
+      game.startGame(false);
+    }else{
+     game.startGame(true);
+   }
+  });
+  $(".dificult-list>li").click(function(){
+    $(".dificult-list>li").removeClass("active");
+    $(".dificult-list>li").find("i").removeClass("fa-check-square-o fa-square-o")
+    $(this).addClass("active");
+    $(this).children().first().addClass("fa-check-square-o");
+  });
+  $(".tables-levels>li").click(function(){
+    $(".tables-levels>li").removeClass("active");
+    $(this).addClass("active");
+  });
 });
+

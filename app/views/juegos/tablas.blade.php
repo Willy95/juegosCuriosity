@@ -8,12 +8,60 @@
 @section('title')
   tablas
 @stop
-
 @section('juego')
 
           <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->
-          <audio src="" id="sound"></audio>
+          <audio id="sound-correct" src="{{asset('/packages/sounds/correct.mp3')}}"></audio>
+          <audio id="sound-correct1" src="{{asset('/packages/sounds/correct1.mp3')}}"></audio>
+          <audio id="sound-error" src="{{asset('/packages/sounds/error.mp3')}}"></audio>
           <div id="zona-play">
+            <div class="modal-instrucciones-game">
+            <div class="container-instrucciones">
+              <h3 class="title-instrucciones">Todas las instrucciones del juego aquí</h3>
+              <p class="instrucciones">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor reiciendis
+                eius inventore placeat facere minima fuga aliquam, cumque numquam aspernatur
+                vel voluptatibus harum natus quo odio est rem repellat rerum nobis libero dolorem
+                totam neque hic quisquam accusamus. Facilis unde libero omnis eligendi tempore
+                repudiandae voluptate eaque ullam explicabo ducimus.
+                <br>
+                <br>1°repudiandae voluptate eaque ullam explicabo ducimus.
+                <br>2°repudiandae voluptate eaque ullam explicabo ducimus.
+                <br>3°repudiandae voluptate eaque ullam explicabo ducimus.</p>
+                <div class="container-select-table">
+                  <h2>Selecciona el nivel<h3>
+                  <ul class="tables-levels">
+                    <li class="active"> <i class="fa fa-star"></i> Nivel 1</li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 2 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 3 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 4 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 5 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 6 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 7 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 8 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 9 </li>
+                    <li class=""><i class="fa fa-star"></i> Nivel 10 </li>
+                  </ul>
+                  <ul class="dificult-list">
+                    <li class="active"><i class="fa fa-check-square-o"></i> Fácil</li>
+                    <li><i class="fa"></i> Dificil</li>
+                  <ul>
+                </div>
+            </div>
+            <div class="btn-instrucciones">
+              <button class="btn btn-warning"><i class="fa fa-paper-plane-o"></i> Omitir</button>
+              <button class="btn btn-warning" id="btn-advice-next"><i class="fa fa-share"></i> siguiente</button>
+              <button class="btn btn-warning btn-comenzar">Comenzar juego</button>
+            </div>
+           </div>
+           <div  class="bur">
+            <div class="select-tables">
+
+            </div>
+            <i class="first"></i>
+            <i class="medio"></i>
+            <i class="last"></i>
+            <img src="{{asset('/packages/images/games/avatar.gif')}}"/>
+           </div>
             <div class="row">
               <div class="col-md-10">
                 <h4><b id="act-reglas">Selecciona el numero correcto</b></h4>
@@ -95,6 +143,7 @@
             </div>
             <div class="row stars">
                 <div class="niveles col-md-4">
+                    <i class="fa fa-star fa-2x"></i>
                     <i class="fa fa-star fa-2x"></i>
                     <i class="fa fa-star fa-2x"></i>
                     <i class="fa fa-star fa-2x"></i>

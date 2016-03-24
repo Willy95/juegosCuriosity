@@ -24,6 +24,15 @@
     padding-left: 4.1%!important;
     border-radius: 50px;
 }
+#btn-comenzar{
+    width: 70%!important;
+}
+#btn-entrenamiento{
+    margin-top: 25px;
+    width: 70%;
+    max-width: 300px;
+   border: solid 3px rgb(255, 255, 255);
+}
 .tables>.row>.col-md-6 {
 	padding: 0!important;
 }
@@ -167,8 +176,307 @@ div.advice
 {
     margin-left: 30%!important;
 }
+#zona-play>.row {
+	-webkit-filter: blur(10px);
+}
+.modal-instrucciones-game{
+    background: url("../../../images/games/bg-modal.jpg");
+    background-size: 100%;
+    position: absolute;
+    border-radius: 30%;
+    border: 4px solid blue;
+    z-index: 10000;
+    width: 58%;
+    left: 35%;
+    height: 70%
+}
+.bur>i{
+    display: inline-block;
+    position: absolute;
+    border-radius: 100%;
+    background: rgba(255,255,255,.8);
+    border: 4px solid blue;
+    top: 63%;
+    z-index: 10000;
+}
+.bur>i.first
+{
+    width: 5%;
+    height:5%;
+    left: 35%;
+    animation: 1.3s blue-white infinite;
+
+}
+.bur>i.last{
+    width: 1.25%;
+    height: 1.25%;
+    left: 30%;
+    top: 70%;
+}
+.bur>i.medio {
+    width: 2.5%;
+    height: 2.5%;
+    left: 32%;
+    top: 67%;
+    animation: 1s blue-white infinite;
+}
+
+.bur>img {
+	position: absolute;
+    z-index: 10000;
+    left: 15%;
+    top: 69%;
+    width: 15%;
+    z-index: 10000;
+    height: 15%;
+}
+div.container-instrucciones{
+    max-width: 80%;
+    min-height: 80%;
+    display: inline-block;
+    position: relative;
+    left: 10%;
+    align-content: center;
+    margin-bottom: 6px;
+}
+div.container-instrucciones>h3
+{
+    color: rgba(24, 42, 183, 0.93);
+    font-size: 2em;
+    text-align: center;
+    font-family: tahoma;
+    font-weight: bold;
+}
+div.container-instrucciones>p
+{
+    color: rgb(1,2,23);
+    font-size: 1em;
+    text-align: justify;
+    font-family: tahoma;
+    font-weight: bolder;
+}
+
+.btn-instrucciones{
+    max-width: 70%;
+    max-height: 10%;
+    position: relative;
+    left: 20%;
+}
+.btn-instrucciones>.btn {
+    display: none;
+    margin-left: 10%;
+}
+.btn-instrucciones>.btn-comenzar{
+    display: block;
+}
+.container-select-table
+{
+    display: none;
+}
+.container-select-table>h2
+{
+    color: rgba(24, 42, 183, 0.93);
+
+    text-align: center;
+    font-family: tahoma;
+    font-weight: bold;
+    font-size: 2em;
+}
+.container-select-table{
+    height: inherit;
+    height: inherit;
+    position: inherit;
+    left: inherit;
+}
+.tables-levels
+{
+    list-style: none;
+    color: #fff;
+
+}
+.tables-levels>li{
+    font-size: .7em;
+    cursor: pointer;
+    padding: 2%;
+    border-bottom: 1px solid #fff;
+    background: rgba(12,12,342,.6);
+}
+.tables-levels>li.active{
+     background: #123;
+     transform: scale(1.1);
+       -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+    transition: 2s;
+}
+.tables-levels>li:hover{
+    transition:.5s;
+     background: #123;
+     transform: scale(1.1);
+    transform: scale(1.1);
+       -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
 
 
+}
+.dificult-list{
+    list-style: none;
+    color: #fff;
+}
+.dificult-list>li{
+    font-size: .7em;
+    cursor: pointer;
+    padding: 2% 5%;
+    border:3px solid #bbb;
+    border-radius: 20%;
+    border-bottom: 1px solid #fff;
+    background: rgba(12,12,342,.6);
+    display: inline-block;
+
+}
+.dificult-list>li.active {
+	 background: #123;
+     transform: scale(1.1);
+       -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+    transition: .2s;
+}
+.dificult-list>li:hover {
+	 background: #123;
+     transform: scale(1.1);
+    transition: .2s;
+    transform: scale(1.1);
+       -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+
+}
+
+.btn-instrucciones>.btn:hover {
+    transition:.7s;
+       -webkit-background-size: 30px 30px;
+   -moz-background-size: 30px 30px;
+   background-size: 30px 30px;
+   background-image: -webkit-gradient(linear, left top, right bottom,
+   color-stop(.25, rgba(255, 255, 255, .15)), color-stop(.25, transparent),
+   color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .15)),
+   color-stop(.75, rgba(255, 255, 255, .15)), color-stop(.75, transparent),
+   to(transparent));
+   background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+   background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%,
+   transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%,
+   transparent 75%, transparent);
+
+
+}
+li.level-disabled{
+    cursor:  not-allowed;
+}
+@-webkit-keyframes animate-stripes {
+   0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+@-moz-keyframes aimate-stripes {
+   0% {background-position: 0 0;} 100% {background-position: 60px 0;}
+}
+@keyframes blue-white
+{
+    0%{background: rgba(255,255,255,.8);}
+    50%{background: blue;}
+    100%{background: rgba(255,255,255,.8)}
+}
 @keyframes good
 {
     0%{display: inline;0;transform: translateY(200px);}
@@ -319,6 +627,7 @@ div.advice
     }
 }
 
+
 /* Para 480px */
 @media only screen and (max-width: 369px) and (min-width: 300px) {
 
@@ -330,4 +639,3 @@ div.advice
 
 
 }
-
