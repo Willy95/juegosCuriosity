@@ -10,6 +10,7 @@
 @stop
 
 @section('panel_opcion')
+@yield('panel_opciones')
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>

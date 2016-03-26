@@ -1,0 +1,144 @@
+
+#zona-play
+{
+    display: none;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.zona-puntaje
+{
+    position: relative;
+    margin-top: calc(3% - 1%);
+}
+#game {
+	padding-left: 0;
+    padding-right: 0;
+    background: linear-gradient(155deg, rgba(36, 162, 185, 0.65) 20%, rgba(14, 44, 208, 0.8) 80%,  rgba(15, 182, 222, 0.74) 80%, rgba(24, 18, 163, 0.53)20%);
+
+}
+div.col-md-7.first-part-game{
+	height: 401px;
+}
+.second-part-game{
+    background: url(../../../images/games/bg-operaciones.png);
+}
+#can{
+    width: 100%;
+    height: 100%;
+    background: url(../../../images/games/bg-ahorcado.png);
+   background-size: cover;
+    border-radius: 5%;
+
+}
+.zona-operation{
+	color: rgba(0,0,0,1);
+
+
+
+}
+.zona-operation>*{
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+
+}
+h1.second-operation{
+	margin-top: 0;
+	margin-bottom: 0;
+	border-bottom: 1px solid #000;
+	font-family: Georgia, sans-serif;
+}
+h1.first-operation{
+	margin-bottom: 0;
+	font-family: Georgia, sans-serif;
+}
+h1.resp-operation{
+	margin-top: 0;
+ 	font-family: Georgia, sans-serif;
+ 	min-height: 40px;
+}
+.operation{
+	text-align: right;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+.numeros h1>i{
+	font-size: .69em;
+}
+.numeros h1{
+	 user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	display: inline-block;
+	color: black;
+	font-weight: bold;
+	color: #00f;
+	cursor: pointer;
+	padding: 3%;
+	margin: 0!important;
+    border-radius: 4%;
+    border:.9px solid blue;
+	text-align: center;
+	background: rgba(226,226,226,1);
+	background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+	background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+
+}
+.numeros h1:hover{
+	color: #000;
+	border-radius: 5%;
+	border:1px solid #000;
+	background: rgba(226,226,226,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: radial-gradient(ellipse at center, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
+}
+.numeros{
+	margin: 8% 25%;
+}
+#check:hover{
+	color: #2fc72f;
+
+}
+#delete:hover{
+	color: #fe4f0f;
+}
+.temp>i{
+	color:red;
+	font-size: 2em;
+}
+.img-start,.img-incorrect
+{
+    position: absolute;
+    z-index: 1000;
+    left: 40%;
+    top: 20%;
+    width: 14%;
+    height: 200%;
+    display: none;
+
+}
+
+@keyframes good
+{
+    0%{display: inline;0;transform: translateY(-300px) translateX(-100px)}
+    69%{opacity: 1;transform: scale(1.9) translateY(0);}
+    99%{transform: translateY(-600px);opacity: 0}
+    100%{display: none;}
+}
+@keyframes bad
+{
+    0%{display: inline;0;transform: translateY(-500px);}
+    69%{opacity: 1;transform: scale(1.7) translateY(0);}
+    99%{transform: translateY(300px);opacity: 0}
+    100%{display: none;}
+}

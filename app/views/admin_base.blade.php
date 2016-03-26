@@ -97,6 +97,14 @@
               </a>
             </li>
 
+
+            <li id="li-memorama">
+              <a href="/memorama">
+                <i class="fa fa-trophy"></i>
+                <span>Memorama</span>
+              </a>
+            </li>
+
             <li id="li-menor-mayor">
               <a href="/menor-mayor">
                 <i class="fa fa-trophy"></i>
@@ -108,6 +116,20 @@
               <a href="/tablas">
                 <i class="fa fa-trophy"></i>
                 <span>Tablas de Multiplicar</span>
+              </a>
+            </li>
+
+             <li id="li-horcado">
+              <a href="/horcado">
+                <i class="fa fa-trophy"></i>
+                <span>Horcado</span>
+              </a>
+            </li>
+
+             <li id="li-dibujar-numeros">
+              <a href="/dibujar-numeros">
+                <i class="fa fa-trophy"></i>
+                <span>Dibujar Numeros</span>
               </a>
             </li>
 

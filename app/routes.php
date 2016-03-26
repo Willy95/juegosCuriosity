@@ -27,4 +27,13 @@ Route::get('/sumas-restas', function(){
 Route::get('/tablas', function(){
     return View::make('juegos.tablas');
 });
+Route::get('/dibujar-numeros',function(){
+	return View::make('juegos.dibujar_numeros');
+});
+Route::get('/horcado',function(){
+	return View::make('juegos.ahorcado');
+});
+Route::get('/memorama',function(){
+	return View::make('juegos.memorama');
+});
 /* ------------------------------------------------- */

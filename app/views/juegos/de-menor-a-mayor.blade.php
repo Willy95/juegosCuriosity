@@ -50,5 +50,5 @@
 @stop
 
 @section('juego_js')
-  {{HTML::script('/packages/js/curiosity/juegos/de-menor-a-mayor.js')}}
+  {{HTML::script('packages/js/curiosity/juegos/tablas.js')}}
 @stop

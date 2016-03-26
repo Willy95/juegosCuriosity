@@ -1,0 +1,111 @@
+.img-start,.img-incorrect
+{
+    position: absolute;
+    z-index: 1000;
+    left: 40%;
+    top: 20%;
+    width: 14%;
+    height: 200%;
+    display: none;
+
+}
+.card-cont{
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    -webkit-perspective: 800;
+    -moz-perspective: 800;
+    perspective: 800;
+    box-shadow: 0 12px 20px -10px rgba(81,64,49,0.6);
+}
+.card{
+    display: inline-block;
+    cursor: pointer;
+    background: blue;
+    margin: 0;
+    padding: 0;
+    webkit-transform-style: preserve-3d;
+    -webkit-transition: all 0.5s;
+
+    -moz-transform-style: preserve-3d;
+    -moz-transition: all 0.5s;
+
+    transform-style: preserve-3d;
+    transition: all 0.5s;
+
+}
+.card-cont:hover .card{
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.memo{
+    margin: 0!important;
+    padding: 0!important;
+}
+.card .reverso{
+    height: 100%;
+    width: 100%;
+
+
+}
+.card .reverso, .card .inverso{
+    height: 100%;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.card .inverso{
+    font-family: Helvetica, Verdana, Arial;
+    height: 100%;
+    width: 100%;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+
+}
+.inverso>h1{
+    display: none;
+    color: #000;
+}
+.card>.reverso>img{
+    width: 100%;
+    height:100%!important;
+    border-radius: 10%;
+}
+
+#zona-play
+{
+    display: none;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.zona-puntaje
+{
+    position: relative;
+    margin-top: calc(3% - 1%);
+}
+#game {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 20%;
+    background: linear-gradient(155deg, rgba(36, 162, 185, 0.65) 20%, rgba(14, 44, 208, 0.8) 80%,  rgba(15, 182, 222, 0.74) 80%, rgba(24, 18, 163, 0.53)20%);
+
+}
+@keyframes good
+{
+    0%{display: inline;0;transform: translateY(-300px) translateX(-100px)}
+    69%{opacity: 1;transform: scale(1.9) translateY(0);}
+    99%{transform: translateY(-600px);opacity: 0}
+    100%{display: none;}
+}
+@keyframes bad
+{
+    0%{display: inline;0;transform: translateY(-500px);}
+    69%{opacity: 1;transform: scale(1.7) translateY(0);}
+    99%{transform: translateY(300px);opacity: 0}
+    100%{display: none;}
+}
