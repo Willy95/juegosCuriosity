@@ -12,9 +12,10 @@ $(document).on("ready",function() {
   $juego.boton.archivoPDF.setNombreDescarga('Guia Sumas Restas');
   $juego.boton.video.setVideo('/packages/video/Restas.mp4');
   $juego.boton.comenzar.setFuncion(comenzarJuego);
+  $("#zona-play").hide();
 //------------------------------------------------------------------------------------------------
 //--------------------------------Variable globales del sistema-----------------------------------
-    var puntosMaximos; //variable para almacenar el puntuaje maximo obtenido por el usuario
+    var puntosMaximos=0; //variable para almacenar el puntuaje maximo obtenido por el usuario
     var puntajeNow =0; // variable para almacenar el puntuaje actual obtenido por el usuario
     var intervalJuego; // variable para almacenar el intervalo del tiempo para el juego
     var vidad=5;// variable para almacenar la cantidad de intentos que el usuario tiene en el juego, una vez terminados estos intentos el juego termina
@@ -24,7 +25,7 @@ $(document).on("ready",function() {
     var $respuestas=$(".options");//arreglo que almacenará las posible respuestas de las opciones
     var maxPtsTemp;// variable auxiliar para almacenar el puntuaje
     var intervalImage; // intervalo de tiempo para cambiar la imagen de fondo de pantalla
-    var index;;// esta variable representa el indice da la opcion donde se encuentra la respuesta correcta
+    var index;// esta variable representa el indice da la opcion donde se encuentra la respuesta correcta
      // Variab le para almacenar la cantidad de aciertos
     var aciertos = 0;
     // Variable para guardar la cantidad de aciertos
@@ -73,11 +74,23 @@ $(".zona-play").hide();
          $opciones.children().css("animation","");
 
      }
+     //dunction para llenar areglo aleatoriamente sin valores repetidos
+     function setArreglo(arreglo,limite){
+        for(var i= 0; i<arreglo.length;i++){
+            numero = numeroAleatorio(limite);
+            arreglo[i]= numero;
+            for(var p=0;p<i;p++){
+                if(arreglo[i]==arreglo[p]){
+                    i--;
+                }
+            }
+        }
+        return arreglo;
+     }
 //-------------------------------------- 	gesTion del documento--------------------------------------------
     function createOptions()
 	{
 		$(".operaciones").empty();
-        $("#game").children().first().append($("<div/>",{class:"col-xs-1"}));
 		for(var i=0; i<5;i++)// el limite de 5 es para solo crear 5 opciones en tiempo de ejecución
 		{
             $option = $("<div/>");
@@ -97,16 +110,22 @@ $(".zona-play").hide();
         $respuestas.children().last().empty();
         if(isNumber)
         {
+            var arreglo=[];
             var number = numeroAleatorio(3);// variable que nos permitira almacenar la respuesta en una posición aleatoria
             for(var i=0;i<=3;i++){
                 numero  =numeroAleatorio(valor+5);
-                $respuestas.children().last().append($("<h2/>",{class:'option'}).text(numero));
-                $($(".option")[i]).data("valor",numero);
+                arreglo[i]=numero;
+                $respuestas.children().last().append($("<h2/>",{class:'option'}));
             }
+            arreglo = setArreglo(arreglo,valor+5);
+            $.each($(".option"),function(i,o){
+                $(this).text(arreglo[i]);
+                $(this).data("valor",arreglo[i]);
+            });
             $($(".option")[number]).text(valor);
-            console.log(valor);
             $($(".option")[number]).data("valor",valor);
             console.log($($(".option")[number]).data("valor"));
+
         }
         else{
             var simboles = ["ope-suma","ope-menos","ope-multi","ope-divi"];
@@ -115,7 +134,6 @@ $(".zona-play").hide();
 
                 $respuestas.children().last().append($("<img  class='img-responsive option' src='packages/images/games/operaciones-aritmeticas/"+simboles[i]+".png'/>"));
                 $($(".option")[i]).data("valor",datos[i]);
-                console.log($($(".option")[i]));
             }
         }
     }
@@ -137,7 +155,9 @@ $respuestas.on("click",".option",function(){
     if($(this).data("valor") == respuesta)
     {
         setCorrecto();
-        $($opciones[index]).children().text(respuesta);
+        $($opciones[index]).children().empty();
+        $($opciones[index]).children().append($(this).text());
+
 
         setTimeout(function(){
             createOptions();
@@ -158,7 +178,7 @@ $respuestas.on("click",".option",function(){
         $(".zona-juego").css("background-image","url(packages/images/fondos/fondo.jpg)");
 		clearInterval(intervalJuego);
 		aciertos=0;
-		tiempo=90;//reiniciar tiempo
+		tiempo=91;//reiniciar tiempo
 		continuo=0;//reiniciar continuos
 		$("#temp-count").text(tiempo + "seg");
 	    // Guardamos el puntaje mayor actual en variable temporal para no perder la catidad de puntos maximos en caso de que este puntaje sea superado
@@ -166,9 +186,9 @@ $respuestas.on("click",".option",function(){
 		//reiniciar puntuaje
 
         // Verificamos si el puntaje obtenido es mayor que el puntaje mayor actual
-        if(maxPtsTemp > puntosMaximos){
+        if(puntajeNow > puntosMaximos){
         // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
-        puntosMaximos = maxPtsTemp;
+        puntosMaximos = puntajeNow;
         // Cambiamos el puntaje maximo en pantalla
         $("#num-max-pts").html(puntosMaximos + " pts");
         }
@@ -183,7 +203,7 @@ $respuestas.on("click",".option",function(){
         if(tiempo == 0)
         {
             finishGame();
-            $juego.modal.puntuacion.mostrar(puntosMaximos, 0, puntajeNow);
+            $juego.modal.puntuacion.mostrar(puntosMaximos,0, puntajeNow);
            puntajeNow=0;
         }else $("#temp-count").text(tiempo + "seg");
     }

@@ -146,7 +146,7 @@
              <li id="li-horcado">
               <a href="/horcado">
                 <i class="fa fa-trophy"></i>
-                <span>Ahoorcado</span>
+                <span>Ahorcado</span>
               </a>
             </li>
 
