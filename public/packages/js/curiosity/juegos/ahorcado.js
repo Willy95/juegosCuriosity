@@ -269,12 +269,12 @@ $(document).ready(function(){
     $(".num").click(function(){
       text = $(this).text();
       if($(".resp-operation").text().length<4){
-        $(".resp-operation").text($(".resp-operation").text()+text);
+        $(".resp-operation").text(text+$(".resp-operation").text());
       }
     });
     $("#delete").click(function(){
       if($(".resp-operation").text().length>0){
-        $(".resp-operation").text($(".resp-operation").text().substring(0,$(".resp-operation").text().length-1));
+        $(".resp-operation").text($(".resp-operation").text().substring(1,$(".resp-operation").text().length));
       }
     });
     $("#check").click(function(){

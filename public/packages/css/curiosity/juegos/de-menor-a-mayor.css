@@ -1,19 +1,4 @@
-body
-{
-  font-family: calibri;
-  color: rgb(71, 71, 71);
-}
 
-#icono{
-  font-size: 15em;
-
-}
-#icono:hover {
-	transition: 1.3s;
-	transform: skew(2deg);
-	color: yellow;
-
-}
 
 #act-reglas{
   font-size: 1.1em;
@@ -27,6 +12,8 @@ body
 
 .valor-resp{
   margin-top: 20px;
+  overflow: hidden;
+  padding: 1%;
 
 }
 
@@ -77,6 +64,136 @@ body
   background-color: rgb(235, 235, 235);
   color: rgb(71, 71, 71);
   border: solid 2px rgba(179, 179, 179, 0.3);
+}
+
+
+@media only screen and (max-width: 1278px) and (min-width: 1100px){
+  .valor-resp > div{
+    width: 100%;
+    height: 100%;
+    -moz-border-radius: 10% 50% / 10% 100%;
+    -webkit-border-radius: 0 50% / 0 100%;
+    border-radius: 0 50% / 0 100%;
+    border: 3px solid #555;
+    font-size: 4.3em;
+  }
+
+}
+@media only screen and (max-width: 1099px) and (min-width: 800px){
+  .valor-resp > div{
+  width: 107%;
+  height: 100%;
+  padding: 10%;
+  position: relative;
+  z-index: 100;
+  -moz-border-radius: 0 50% / 0 100%;
+  -webkit-border-radius: 0 50% / 0 100%;
+  border-radius: 0 50% / 0 100%;
+  border: 3px solid #555;
+  font-size: 3.8em;
+}
+.valor-resp{
+  width: 20%;
+}
+
+}
+@media only screen and (max-width: 799px) and (min-width:540px) {
+   .valor-resp > div{
+      width: 102%;
+      height: 100%;
+      padding: 4%;
+      position: relative;
+      z-index: 100;
+      -moz-border-radius: 10% 50% / 0 100%;
+      -webkit-border-radius: 10% 50% / 0 100%;
+      border-radius: 10% 50% / 0 100%;
+      border: 3px solid #512355;
+      font-size: 3.4em;
+  }
+  .valor-resp{
+      width: 20%;
+  }
+
+}
+
+@media only screen and (max-width:540px) and (min-width:500px){
+      .valor-resp > div{
+      width: 101%;
+      height: 100%;
+      padding: 3%;
+      position: relative;
+      z-index: 100;
+      -moz-border-radius: 10% 50% / 0 100%;
+      -webkit-border-radius: 10% 50% / 0 100%;
+      border-radius: 10% 50% / 0 100%;
+      border: 3px solid #512355;
+      font-size: 3.2em;
+  }
+  .valor-resp{
+      width: 20%;
+  }
+
+}
+/* Para 600px */
+@media only screen and (max-width: 499px) and (min-width: 395px) {
+    .valor-resp > div{
+      width: 105%;
+      height: 100%;
+      padding: 2%;
+      position: relative;
+      z-index: 100;
+      -moz-border-radius: 40% 50% / 0 100%;
+      -webkit-border-radius: 40% 50% / 0 100%;
+      border-radius: 40% 50% / 0 100%;
+      border: 3px solid #512355;
+      font-size: 2.7em;
+  }
+  .valor-resp{
+      width: 21%;
+  }
+}
+
+
+/* Para 480px */
+@media only screen and (max-width: 394px) and (min-width: 335px) {
+      .valor-resp > div{
+      width: 106%;
+      height: 100%;
+      padding: 1%;
+      position: relative;
+      z-index: 100;
+      -moz-border-radius: 60% 50% / 10% 100%;
+      -webkit-border-radius: 60% 50% / 10% 100%;
+      border-radius: 60% 50% / 10% 100%;
+      border: 3px solid #512355;
+      font-size: 2.3em;
+  }
+  .valor-resp{
+      width: 21%;
+  }
+  .zona-juego{
+    padding: 10;
+  }
+}
+
+/* Para 320px */
+@media only screen and (max-width: 334px) and (min-width: 260px)  {
+      .valor-resp > div{
+      width: 106%;
+      height: 100%;
+      padding: 1%;
+      position: relative;
+      z-index: 100;
+      -moz-border-radius: 60% 50% / 10% 100%;
+      -webkit-border-radius: 60% 50% / 10% 100%;
+      border-radius: 60% 50% / 10% 100%;
+      border: 3px solid #512355;
+      font-size: 2.3em;
+  }
+  .valor-resp{
+      width: 21%;
+  }
+
 }
 
 .actividadBotones > button:hover, .actividadBotones > a:hover{
@@ -150,4 +267,36 @@ body
 .cal-titulo > h1{
   font-size: 1.8em;
   margin-top: -5px;
+}
+
+
+
+@media only screen and (max-width: 1178px) and (min-width: 300px){
+
+
+}
+@media only screen and (max-width: 1178px) and (min-width:845px) {
+
+}
+
+@media only screen and (max-width:844px) and (min-width:530px){
+
+
+}
+/* Para 600px */
+@media only screen and (max-width: 529px) and (min-width: 370px) {
+
+}
+
+
+/* Para 480px */
+@media only screen and (max-width: 369px) and (min-width: 300px) {
+
+
+http://www.juegoscuriosity.git.com.mx/multiplicaciones}
+
+/* Para 320px */
+@media only screen and (max-width: 449px) and (min-width: 300px)  {
+
+
 }

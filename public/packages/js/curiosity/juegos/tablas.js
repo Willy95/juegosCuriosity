@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   var objetivo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor reiciendis eius inventore placeat facere minima fuga aliquam, cumque numquam aspernatur vel voluptatibus harum natus quo odio est rem repellat rerum nobis libero dolorem totam neque hic quisquam accusamus. Facilis unde libero omnis eligendi tempore repudiandae voluptate eaque ullam explicabo ducimus.";
   $curiosity.menu.setPaginaId("#li-tablas");
   $juego.setTitulo("Tablas de multiplicar");
@@ -180,7 +181,11 @@ $(document).ready(function(){
             tabla.capturado=false;
             $(".n-res2").hide();
             $("html,body").animate({scrollTop:200},'slow');
-            game.cantTemp=60;
+            game.cantTemp=120;
+            if(!dificult){
+              game.cantTemp=-1;
+              game.$temp.hide();
+            }
             tabla.$zonaRes.hide();
             tabla.$zonaRes.droppable('option','disabled',false);
             tabla.res="";
@@ -333,11 +338,17 @@ $(document).ready(function(){
 
 // ----------------------------------------------------------------------------
 //boton dentro de las instrucciones para ir a la siguiente pestaña
-  $("#btn-advice-next").click(function(){
+  $("#btn-advice-next,.btn-advice-next").click(function(){
     $(".title-instrucciones").hide('slow');
     $(".instrucciones").hide('slow');
     $(".container-select-table").show('slow');
+    $(".btn-instrucciones").children().removeClass("visible-xs");
+    $(".btn-instrucciones").children().addClass("hidden");
     $(".btn-instrucciones").children().toggle();
+    $(".btn-comenzar").removeClass("hidden");
+    $(".btn-comenzar").last().removeClass("hidden-xs");
+    $(".btn-comenzar").show();
+
   });
   $("#zona-play").on("click",".btn-comenzar",function(){
     $("#zona-play>.row").css({"-webkit-filter":"blur(0px)"});
@@ -367,5 +378,11 @@ $(document).ready(function(){
     $(".tables-levels>li").removeClass("active");
     $(this).addClass("active");
   });
+
+  //funcion que se utiliza para pantalas tactiles con el objetivo de prevenir el efecto de desplazamiento con el tacto a la hora de estar en la zona de juego
+   $(".zona-numeros").on('touchmove', function(event) {
+      event.preventDefault();
+    });
+
 });
 

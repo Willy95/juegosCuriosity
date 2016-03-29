@@ -155,3 +155,77 @@
 .actividadBotones{
   margin-top: 20px;
 }
+@media only screen and (max-width: 794px) and (min-width: 495px) {
+    .temp>h3{
+    font-size: 1.5em;
+  }
+  .temp>h5{
+    font-size: 1.7em;
+  }
+  section.content{
+    padding: 8px!important;
+  }
+  .cont-game{
+    padding: 4px!important;
+  }
+  .zona-juego{
+    padding: 18px!important;
+  }
+  .zona-puntaje h3{
+    font-size: 1.6em;
+  }
+  .combo{
+    font-size: 2.6em!important;
+  }
+
+
+}
+
+@media only screen and (max-width: 494px) and (min-width: 335px) {
+  .temp>h3{
+    font-size: 1.3em;
+  }
+  .temp>h5{
+    font-size: 1.5em;
+  }
+  section.content{
+    padding: 5px!important;
+  }
+  .cont-game{
+    padding: 2px!important;
+  }
+  .zona-juego{
+    padding: 15px!important;
+  }
+  .zona-puntaje h3{
+    font-size: 1.4em;
+  }
+  .combo{
+    font-size: 1.9em!important;
+  }
+
+}
+@media only screen and (max-width: 333px) and (min-width: 199px) {
+  .temp>h3{
+    font-size: 1em;
+  }
+  .temp>h5{
+    font-size: 1.1em;
+  }
+  section.content{
+    padding: 1px!important;
+  }
+  .cont-game{
+    padding: 1px!important;
+  }
+  .zona-juego{
+    padding: 5px!important;
+  }
+  .zona-puntaje h3{
+    font-size: 1.1em;
+  }
+  .combo{
+    font-size: 1.3em!important;
+  }
+
+  }

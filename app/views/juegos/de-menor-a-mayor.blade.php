@@ -14,7 +14,6 @@
           <div id="zona-play">
             <div class="row">
               <div class="col-md-10 text-left">
-                <h4><b id="act-reglas">Selecciona los numeros de menor a mayor </b></h4>
               </div>
               <div class="col-md-2 text-right">
                 <div class="temp">
@@ -50,5 +49,5 @@
 @stop
 
 @section('juego_js')
-  {{HTML::script('packages/js/curiosity/juegos/tablas.js')}}
+  {{HTML::script('packages/js/curiosity/juegos/de-menor-a-mayor.js')}}
 @stop

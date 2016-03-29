@@ -82,7 +82,7 @@
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid cont-game">
       <div class="row">
           <div class="col-xs-12">
               <div class="zona-juego">
@@ -146,6 +146,7 @@
 @stop
 
 @section('mi_js')
+   {{HTML::script('/packages/jquery-ui-1.11.4.custom/jquery-ui.min.js')}}
   {{ HTML::script('/packages/js/curiosity/juegos/juegos_layer.js') }}
   @yield('juego_js')
 @stop

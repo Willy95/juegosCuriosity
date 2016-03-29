@@ -48,9 +48,13 @@
                 </div>
             </div>
             <div class="btn-instrucciones">
-              <button class="btn btn-warning"><i class="fa fa-paper-plane-o"></i> Omitir</button>
-              <button class="btn btn-warning" id="btn-advice-next"><i class="fa fa-share"></i> siguiente</button>
-              <button class="btn btn-warning btn-comenzar">Comenzar juego</button>
+              <button class="btn btn-warning hidden-xs"><i class="fa fa-paper-plane-o"></i> Omitir</button>
+              <button class="btn btn-warning hidden-xs" id="btn-advice-next"><i class="fa fa-share"></i> siguiente</button>
+              <button class="btn btn-warning btn-comenzar hidden-xs hidden">Comenzar juego</button>
+              <button class="btn btn-xs btn-warning btn-omitir visible-xs"><i class="fa fa-paper-plane-o"></i></button>
+              <button class="btn btn-xs btn-warning visible-xs btn-advice-next" id="btn-advice-next"><i class="fa fa-share"></i></button>
+              <button class="btn btn-xs btn-warning btn-comenzar hidden-xs visible-xs"><i class="fa fa-play"></i></button>
+
             </div>
            </div>
            <div  class="bur">
@@ -182,6 +186,6 @@
 @stop
 
 @section('juego_js')
+
   {{HTML::script('/packages/js/curiosity/juegos/tablas.js')}}
-  {{HTML::script('/packages/jquery-ui-1.11.4.custom/jquery-ui.min.js')}}
 @stop

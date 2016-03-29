@@ -1,4 +1,4 @@
-﻿$(document).on("ready",function() {
+$(document).on("ready",function() {
 
   var objetivo = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugiat soluta, saepe asperiores odio magni eos. Autem repudiandae earum consequatur dolorum molestias odio, laborum veniam voluptate nisi. Sint animi dolore, laborum nisi reiciendis nobis voluptas.";
 
@@ -17,6 +17,8 @@
 // ---------------------------------------------------------------------------------------------
   // Guardamos el puntaje maximo del usuario en una variable para uso global
   var puntosMaximos = 0;
+  //variable arreglo para almacenar las series
+  var numeros = [];
   // Establece la cantidad de segundos de inicio
   var $tiempo = 60;
   // Declaramos la variable de forma globar a utilizar en el setInterval(intervalo de tiempo)
@@ -36,7 +38,7 @@
   //funcion para determinar el nivel del juego
   var nivel =0;
   //la variable de wily
-	var maxPtsTemp;
+  var maxPtsTemp;
 // ---------------------------------------------------------------------------------------------
 // PETICIONES A BASE DE DATOS
 // ---------------------------------------------------------------------------------------------
@@ -181,42 +183,44 @@ function numeroAleatorio(num)
 }
 //--------------------------------------------------------------------------------------------------------------
 //--------------------------------función para establecer la serio de numeros aleatorios------------------------
-	function setSeries()
-	{
-		$.each($(".valor-resp"),function(){
-			$(this).data("valor",numeroAleatorio(100));//establecer el valor en los metadatos del elemento dom
-			$(this).children().text($(this).data("valor"));//establecer el valor en el texto del elemento
+	function setSeries(){
+		$.each($(".valor-resp"),function(i,v){
+			$(this).children().text(numeroAleatorio(98)+1);//establecer el valor en el texto del elemento
+			numeros[i]=parseInt($(this).children().text());
 			$(this).css("animation","");
 			$(this).css("animation","").css("amimation","");//eliminar el efecto de entrada de las opciones
 			$(this).children().css("background",colores[numeroAleatorio(colores.length)]);//generar un color aleatoriamente
 		});
+
 	}
 //--------------------------------------------------------------------------------------------------------------
 //--------------------------funcion paraq verificar que el numero elegido por el usuario sea el más alto--------
 	function isMax(num)
 	{
-
-		var menor = $(".valor-resp").first().data("valor");//traerme el valor del primer elemento
-		$.each($(".valor-resp"),function(){
-			if($(this).data("valor") < menor)
-				menor=$(this).data("valor");
-		});
-		if(num == menor)
+		var pos=0;//variable auxiliar para determinar la posicion en la que se encuantra el numero mayor
+		var menor =numeros[pos];//traerme el valor del primer elemento
+		for(var i=0;i<numeros.length;i++){//verificar cual de los valores que esta en la serie es el mayor
+			if(numeros[i] < menor){
+				menor=numeros[i];
+				pos=i;
+			}
+		}
+		if(num == menor){// si el elemento es el mayor entonces retornamos afirmativo
+			numeros.splice(pos,1);
 			return true;
+		}
+		else return false;
 	}
 //--------------------------------------------------------------------------------------------------------------
 //--------------------------Evento click del un numero dentro del juego-----------------------------------------
 	$("#game").on("click",".valor-resp",function(e){
-		if(isMax($(this).data("valor")))//en caso de que presiono el numero mayor
-		{
+		if(isMax(parseInt($(this).text()))){//en caso de que presiono el numero mayor
 			$(this).css({"animation":"1s goodBy ease 1 forwards"});//desapareser con una pequña animacióm
-			$(this).data("valor",100);//establecer valor minimo para que no vuelva a ser el mayor
 			aciertos +=1;
 			setCorrecto();
 			determinarCombo();
-		}
-		else
-			setError();
+		}else setError();
+
 		if(aciertos==opciones)//si selecciona los   numeros correctamente se generan una nueva serie de numeros
 		{
 			nivel += 1;//variable de control al llegar a dos sube de nivel
@@ -238,6 +242,7 @@ function numeroAleatorio(num)
 			},700);
 		}
 	});
+
 
 //------------------------------------Funcion para crear conbo con efecto------------------------------------//
 	function setCombo(combo)//parametro para establecer si el combo sera de 10 , 15 o 20

@@ -1,3 +1,4 @@
+
 #zona-play
 {
     min-height: 100px;
@@ -188,7 +189,8 @@ div.advice
     z-index: 10000;
     width: 58%;
     left: 35%;
-    height: 70%
+    height: 70%;
+
 }
 .bur>i{
     display: inline-block;
@@ -519,6 +521,13 @@ li.level-disabled{
     }
 
 }
+
+@media only screen and (max-width: 1278px) and (min-width: 100px){
+    .title-game{
+       display: none;
+    }
+
+}
 @media only screen and (max-width: 1178px) and (min-width:845px) {
 
 
@@ -552,6 +561,36 @@ li.level-disabled{
         min-width: 80px;
         float: left!important;
     }
+    div.container-instrucciones>h3
+    {
+        font-size: 1.6em;
+        text-align: center;
+        font-family: tahoma;
+        font-weight: bold;
+    }
+    div.container-instrucciones>p
+    {
+        font-size: .8em;
+        font-weight: bold;
+    }
+    .container-select-table>h2
+    {
+      color: rgba(24, 42, 183, 0.93);
+
+      text-align: center;
+      font-family: tahoma;
+      font-weight: bold;
+   }
+    .container-select-table>h2
+    {
+      font-size: 1.6em;
+    }
+
+    .dificult-list>li{
+        font-size: .7em;
+    }
+
+
 }
 
 @media only screen and (max-width:844px) and (min-width:530px){
@@ -559,7 +598,7 @@ li.level-disabled{
         font-size: 1em;
         margin-left: 1%;
         margin-right: 1%;
-        line-height: 1!important
+        line-height: 1!important;
     }
     .table{
         margin-left: 1%!important;
@@ -568,10 +607,10 @@ li.level-disabled{
         font-size:1.3em;
     }
     .tb-respuestas>.zona-numeros>h2 {
-        padding: 4px!important;
-        border-radius: 10%;
+        padding: 3px!important;
+        border-radius: 8%;
         margin: 2px;
-        font-size: 2.4em;
+        font-size: 2.5em;
     }
     i.fa-remove{
         font-size: 1em!important;
@@ -587,6 +626,38 @@ li.level-disabled{
     }
     .tb-respuestas>.zona-numeros{
         padding-top: 25%;
+    }
+     div.container-instrucciones>h3
+    {
+        font-size: 1.4em;
+        text-align: center;
+        font-family: tahoma;
+        font-weight: bold;
+    }
+    div.container-instrucciones>p
+    {
+        font-size: .7em;
+        font-weight: bold;
+    }
+    .container-select-table>h2
+    {
+      font-size: 1.4em;
+    }
+
+     .container-select-table{
+         left: inherit;
+      }
+      .dificult-list>li{
+        font-size: .6em;
+    }
+  .btn-omitir,.btn-advice-next {
+      display: none;
+      margin-left: 6%;
+      width: 70%!important;
+    }
+    .btn-comenzar{
+      margin: 0!important;
+       width: 70%!important;
     }
 
 }
@@ -625,7 +696,115 @@ li.level-disabled{
     .tb-respuestas>.zona-numeros{
         padding-top: 35%;
     }
+     div.container-instrucciones>h3
+    {
+        font-size: 1.2em;
+        text-align: center;
+        font-family: tahoma;
+        font-weight: bold;
+    }
+    div.container-instrucciones>p
+    {
+        font-size: .6em;
+        font-weight: bold;
+    }
+    .container-select-table>h2
+    {
+      font-size: 1.2em;
+    }
+    .tables-levels>li{
+      font-size: .6em;
+     }
+     .dificult-list>li{
+        font-size: .5em;
+    }
+     .btn-omitir,.btn-advice-next {
+      display: none;
+      margin-left: 6%;
+      width: 70%!important;
+    }
+    .btn-comenzar{
+      margin: 0!important;
+    }
 }
+@media only screen and (max-width: 369px) and (min-width: 199px) {
+    .n1,.n2,.res,.equal{
+        font-size: .6em;
+        margin-left: .2%;
+        margin-right: .2%;
+        line-height: .6!important
+    }
+    .table{
+        margin-left: .7%!important;
+    }
+    .niveles>i.fa-star{
+        font-size:.9em;
+    }
+    .tb-respuestas>.zona-numeros>h2 {
+        padding: 1px!important;
+        margin: 1px;
+        font-size: 1.6em;
+    }
+
+    i.fa-remove{
+        font-size: .9em!important;
+    }
+    .tb-respuestas>.zona-respuestas>h1 {
+        margin-left: 7%;
+        min-height: 53px;
+        min-width: 53px;
+        float: left!important;
+    }
+    .tables{
+        border-radius: 5px;
+    }
+    .tb-respuestas>.zona-numeros{
+        padding-top: 25%;
+    }
+     div.container-instrucciones>h3
+    {
+        font-size: .9em;
+        text-align: center;
+        font-family: tahoma;
+        font-weight: bold;
+    }
+    div.container-instrucciones>p
+    {
+        font-size: .5em;
+        font-weight: bold;
+    }
+    .container-select-table>h2
+    {
+      font-size: .9em;
+    }
+    .tables-levels>li{
+      font-size: .4em;
+     }
+     .dificult-list>li{
+        font-size: .4em;
+
+    }
+    .dificult-list{
+      left: 0;
+    }
+    .tables-levels{
+      padding-left: 10px!important;
+    }
+     .btn-omitir,.btn-advice-next {
+      display: none;
+      margin-left: 6%;
+      width: 70%!important;
+    }
+    .btn-comenzar{
+      margin: 0!important;
+    }
+
+    .modal-instrucciones-game{
+      height: 400px!important;
+      margin-top: 40%;
+    }
+}
+
 
 
 /* Para 480px */

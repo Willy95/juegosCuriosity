@@ -96,14 +96,38 @@
                 <span>Sumas y Restas</span>
               </a>
             </li>
+            <li id="li-restas">
+              <a href="/restas">
+                <i class="fa fa-trophy"></i>
+                <span>Restas</span>
+              </a>
+            </li>
+            <li id="li-sumas">
+              <a href="/sumas">
+                <i class="fa fa-trophy"></i>
+                <span>Sumas</span>
+              </a>
+            </li>
+            <li id="li-multiplicaciones">
+              <a href="/multiplicaciones">
+                <i class="fa fa-trophy"></i>
+                <span>Multiplicaciones</span>
+              </a>
+            </li>
+            <li id="li-operaciones">
+              <a href="/operaciones">
+                <i class="fa fa-trophy"></i>
+                <span>Incógnitas</span>
+              </a>
+            </li>
 
 
-            <li id="li-memorama">
+           <!-- <li id="li-memorama">
               <a href="/memorama">
                 <i class="fa fa-trophy"></i>
                 <span>Memorama</span>
               </a>
-            </li>
+            </li>-->
 
             <li id="li-menor-mayor">
               <a href="/menor-mayor">
@@ -122,16 +146,16 @@
              <li id="li-horcado">
               <a href="/horcado">
                 <i class="fa fa-trophy"></i>
-                <span>Horcado</span>
+                <span>Ahoorcado</span>
               </a>
             </li>
 
-             <li id="li-dibujar-numeros">
+            <!-- <li id="li-dibujar-numeros">
               <a href="/dibujar-numeros">
                 <i class="fa fa-trophy"></i>
                 <span>Dibujar Numeros</span>
               </a>
-            </li>
+            </li>-->
 
             <li class="visible-xs">
               <a href="/">
@@ -147,7 +171,7 @@
       <div class="content-wrapper">
         <!-- Encabezado de la pagina -->
         <section class="content-header">
-          <div class="well">
+          <div class="well title-game">
                 <h1>
                   @yield('titulo_contenido')
                   <small>@yield('titulo_small')</small>
