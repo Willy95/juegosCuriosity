@@ -79,9 +79,9 @@ $(document).ready(function() {
   // Acciones a realizar al hacer click en el boton de comenzar la actividad
   function funcionComenzar() {
     // Establecemos la primera operacion de inicio
-     data1 = calcOperacion(nivel,"resp-1");
+     data1 = calcOperacion(nivel,"resp-1",true);
      // Establecemos la segunda operacion de inicio
-     data2 = calcOperacion(nivel,"resp-2");
+     data2 = calcOperacion(nivel,"resp-2",false);
      // Ocultamos la pantalla del objetivo
      $("#zona-obj").attr('class', 'hidden');
     // Mostramos la pantalla de juego
@@ -181,7 +181,7 @@ $(document).ready(function() {
 // ---------------------------------------------------------------------------------------------
 // FUNCION PARA CONTROLAR LAS OPERACIONES MATEMATICA DE LA OPCION UNO (IZQ)
 // ---------------------------------------------------------------------------------------------
-function calcOperacion(nivel,contenedor){
+function calcOperacion(nivel,contenedor,isFirst){
   categoria = (nivel_prueba == (categoria*3)) ? nivel_prueba-(nivel_prueba/3) : categoria;
   nivel = (nivel > categoria) ? categoria : nivel;
   // Establecemos el primer numero de la operacion a realizar en la primera opcion
@@ -190,7 +190,14 @@ function calcOperacion(nivel,contenedor){
   var num2_1 = $valorRandom(9);
   // Declaramos la variable donde se guardará el resultado de la operacion a realizar en la primera opcion
   var result1;
-
+  // si no es la primera vez  que se genera la operación entonces comparamos la seguna operación que no se repita
+  if(!isFirst){
+    if(num1_1===parseInt($("#resp-1").text().charAt(0))){
+        if(num1_1==10){
+          num1_1--;
+      }else num1_1++;
+    }
+  }
     // Realizamos la operacion de multiplicación para calcular el resultado de la operacion
     result1 = (num1_1 * num2_1);
     // Se coloca la operacion a realizar en la primera opcion
@@ -239,7 +246,7 @@ function calcOperacion(nivel,contenedor){
         $juego.setEficienciaMaxInicio(eficiencia);
       }
       // // mostramos alerta en pantalla
-      $juego.modal.puntuacion.mostrar(puntosMaximos, eficiencia, puntajeNow);
+      $juego.modal.puntuacion.mostrar(puntosMaximos, puntajeNow);
 
       // ocultamos la pantalla de juego
       $("#zona-play").attr('class', 'hidden');
@@ -274,9 +281,9 @@ function calcOperacion(nivel,contenedor){
       setError();
     }
     // Cambiamos los valores de la primera opcion
-    data1 = calcOperacion(nivel,"resp-1");
+    data1 = calcOperacion(nivel,"resp-1",true);
     // Cambiamos los valores de la segunda opcion
-    data2 = calcOperacion(nivel,"resp-2");
+    data2 = calcOperacion(nivel,"resp-2",false);
     // Determinar si se asignará un combo de puntaje al alumno
     determinarCombo();
     // sumamos el click realizado
@@ -337,6 +344,7 @@ function calcOperacion(nivel,contenedor){
 // FUNCION A REALIZAR EN CADA OPCION SELECCIONADA ERRONEAMENRE
 // -----------------------------------------------------
   function setError(){
+    cantTemp-=3;
     // regresamos la cantidad de aciertos continuos a cero
     continuo = 0;
     // Regresamos el valor de los puntos por acirto a 100
@@ -361,6 +369,7 @@ function calcOperacion(nivel,contenedor){
 // FUNCION A REALIZAR EN CADA OPCION SELECCIONADA CORRECTAMENTE
 // ---------------------------------------------------------------------------------------------
   function setCorrecto(){
+    cantTemp++;
     setCombo(valorPts);
     // sumamos el puntaje
     $("#countPuntaje").text(puntajeNow += valorPts);

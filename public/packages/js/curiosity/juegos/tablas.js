@@ -26,6 +26,8 @@ $(document).ready(function(){
      $zonaRes:$(),//Zona donde el usuario arrastra las opciones seleccionadas
      $res:$(),//Elemento del Dom donde se encuentra el resultado de la tabla este numero se genera de la multiplicación de los numeros ya menciondao $n1 y $n2
      capturado:false,//variable de auxiliar para saber si la respuesta arrastrada fue capturada en la zona de respuestas
+    // cantidad de elementos a mostrar
+     listElements:4,
      generarTabla : function(dificult){// se genera la tabla de multiplicar segun su nivel
       var numeros=[1,2,3,4,5,6,7,8,9,10];
         for(var i=0;i<this.$n1.length;i++){
@@ -45,6 +47,22 @@ $(document).ready(function(){
             }
         }
     },
+    hideOptions:function(){
+        limite =tabla.pos+4;
+        if(limite>10){
+          $(".tb").hide();
+          for(var i=tabla.pos-2;i<limite;i++){
+            $($(".tb")[i]).show();
+          }
+        }else{
+
+           $(".tb").hide();
+          for(var i=tabla.pos;i<limite;i++){
+            $($(".tb")[i]).show();
+          }
+        }
+
+    },
     verificar:function($n){//funcion que verifica si el resultado seleccionado por el usuario es correcto
         if($n==$(this.$res[this.pos]).data("valor")){// si el numero que selecciono es correcto regresamos true  si no false
 
@@ -52,8 +70,12 @@ $(document).ready(function(){
             $(this.$res[this.pos]).parent().parent().find("i").removeClass("fa-square-o");
             $(this.$res[this.pos]).parent().parent().find("i").addClass("fa-check");
             $(this.$res[this.pos]).text($(this.$res[this.pos]).data("valor"));
-            $(this.$niveles[this.pos]).css("color","yellow")
+            $(this.$niveles[this.pos]).css("color","yellow");
             this.pos++;
+            if(tabla.pos===tabla.listElements){
+                tabla.hideOptions();
+                tabla.listElements+=tabla.listElements;
+            }
             var nivelTem=10;
             document.getElementById('sound-correct1').play();
             if(this.pos>9){
@@ -148,6 +170,7 @@ $(document).ready(function(){
           totAciertos : 0,
           // Cantidad total de errores
           totErrores : 0,
+
           $temp:$("#temp-count"),
           setError: function(){
             // regresamos la cantidad de aciertos continuos a cero
@@ -171,6 +194,7 @@ $(document).ready(function(){
         },
         startGame: function(dificult){//funcion displarada al comenzar el juego aquí se iniciar el tiempo y se mustra la zona del juego
             //establecemos propiedades al objeto tabla
+
             tabla.$n1=$(".n1");
             tabla.$n2=$(".n2");
             tabla.$res=$(".res");
@@ -180,7 +204,7 @@ $(document).ready(function(){
             tabla.generarTabla(dificult);
             tabla.capturado=false;
             $(".n-res2").hide();
-            $("html,body").animate({scrollTop:200},'slow');
+            $("html,body").animate({scrollTop:100},'slow');
             game.cantTemp=120;
             if(!dificult){
               game.cantTemp=-1;
@@ -191,6 +215,7 @@ $(document).ready(function(){
             tabla.res="";
             tabla.lenghtRes();
             game.interval = setInterval(game.restarTiempo, 1000);
+            tabla.hideOptions();
             //interval = setInterval(changeTime,1000);
         },
         restarTiempo:function()
@@ -207,7 +232,7 @@ $(document).ready(function(){
                  game.puntosMaximos=game.puntajeNow;
              }
              game.eficiencia= Math.round(game.totAciertos*100)/game.intentos;
-             $juego.modal.puntuacion.mostrar(game.puntosMaximos, game.eficiencia, game.puntajeNow);
+             $juego.modal.puntuacion.mostrar(game.puntosMaximos,game.puntajeNow);
              $("#zona-play").hide();
              $("#zona-play>.row").css({"-webkit-filter":"blur(10px)"});
              $("#zona-obj").show();
@@ -268,7 +293,6 @@ $(document).ready(function(){
             $(".container-select-table").hide();
             $(".title-instrucciones").show();
             $(".instrucciones").show();
-            $(".btn-instrucciones").children().toggle();
       });
  /*----------------------------------------------------------------------*/
     $(".zona-numeros>h2").draggable({
@@ -338,16 +362,11 @@ $(document).ready(function(){
 
 // ----------------------------------------------------------------------------
 //boton dentro de las instrucciones para ir a la siguiente pestaña
-  $("#btn-advice-next,.btn-advice-next").click(function(){
+  $(".btn-advice-next").click(function(){
     $(".title-instrucciones").hide('slow');
     $(".instrucciones").hide('slow');
     $(".container-select-table").show('slow');
-    $(".btn-instrucciones").children().removeClass("visible-xs");
-    $(".btn-instrucciones").children().addClass("hidden");
-    $(".btn-instrucciones").children().toggle();
-    $(".btn-comenzar").removeClass("hidden");
-    $(".btn-comenzar").last().removeClass("hidden-xs");
-    $(".btn-comenzar").show();
+    $(".btn-instrucciones>div").toggle();
 
   });
   $("#zona-play").on("click",".btn-comenzar",function(){
@@ -356,6 +375,7 @@ $(document).ready(function(){
     $(".modal-instrucciones-game>.container-select-table").hide();
     $(".modal-instrucciones-game>.title-instrucciones").show();
     $(".modal-instrucciones-game>.instrucciones").show();
+    $(".btn-instrucciones>div").toggle();
     $(".bur").hide();
     $.each($(".tables-levels>li"),function(i,v){
       if($(this).hasClass("active")){
@@ -370,7 +390,7 @@ $(document).ready(function(){
   });
   $(".dificult-list>li").click(function(){
     $(".dificult-list>li").removeClass("active");
-    $(".dificult-list>li").find("i").removeClass("fa-check-square-o fa-square-o")
+    $(".dificult-list>li").find("i").removeClass("fa-check-square-o fa-square-o");
     $(this).addClass("active");
     $(this).children().first().addClass("fa-check-square-o");
   });

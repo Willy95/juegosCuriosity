@@ -34,7 +34,7 @@ $(document).ready(function(){
           // Guardamos el puntaje maximo del usuario en una variable para uso global
           puntosMaximos: 0,
           // Establece la cantidad de segundos de inicio
-          cantTemp: 0,
+          cantTemp: 90,
           // Declaramos la variable de forma globar a utilizar en el setInterval(intervalo de tiempo)
           interval:0,
           // Declaramos la variable para uso de puntaje
@@ -55,6 +55,7 @@ $(document).ready(function(){
           totErrores : 0,
           $temp:$("#temp-count"),
           setError: function(){
+            game.cantTemp-=3;
             game.setEffect($(".img-incorrect"),'good');
             $($(".temp>i")[ahorcado.errores-1]).css("color","#ddd");
             ahorcado.setError();
@@ -83,21 +84,35 @@ $(document).ready(function(){
             game.setOperationNew();
             ahorcado.dibujoBase();
             $(".temp>i").css("color","red");
-           // game.interval = setInterval(game.restarTiempo, 1000);
-            //interval = setInterval(changeTime,1000);
+            $(".result-operation>td").text("_");
+            game.interval = setInterval(game.restarTiempo, 1000);
         },
         setOperationNew:function(){
-          $(".first-operation").text(operacion.numeroAleatorio(100));
-          $(".second-operation").text(operacion.numeroAleatorio(100));
-          operacion.num1=parseInt($(".first-operation").text());
-          operacion.num2=parseInt($(".second-operation").text());
+          operacion.num1=operacion.numeroAleatorio(500);
+          operacion.num2=operacion.numeroAleatorio(500);
+          if(operacion.num1>operacion.num2){
+            var auxiliar = operacion.num1;
+            operacion.num1=operacion.num2;
+            operacion.num2=auxiliar;
+          }
+          console.log(operacion.num1);
+          var numero1= ""+operacion.num1;
+          var numero2= ""+operacion.num2;
+          var length = $(".operation tr.first-operation>td").length;
+          $.each($(".operation tr.first-operation>td"),function(i,o){
+            $($(".operation tr.first-operation>td")[(length-1)-i]).text(numero1.charAt((numero1.length-1)-i));
+          });
+          $.each($(".operation tr.second-operation>td"),function(i,o){
+            $($(".operation tr.second-operation>td")[(length-1)-i]).text(numero2.charAt((numero2.length-1)-i));
+          });
+
           $(".resp-operation").text("");
         },
         restarTiempo:function()
         {
             game.cantTemp--;
-            game.$temp.text(game.cantTemp);
-            if(game.cantTemp===0){
+            game.$temp.text(game.cantTemp+" Seg");
+            if(game.cantTemp<=0){
                game.finishGame();
             }
         },
@@ -105,6 +120,9 @@ $(document).ready(function(){
              if(game.puntajeNow>game.puntosMaximos){
                  game.puntosMaximos=game.puntajeNow;
              }
+             clearInterval(game.interval);
+             game.cantTemp=90;
+             operacion.posRes=2;
             // Store the current transformation matrix
             ahorcado.eliminarCirculo();
             // Use the identity matrix while clearing the canvas
@@ -112,13 +130,14 @@ $(document).ready(function(){
             // Restore the transform
              ahorcado.cntx.restore();
              game.eficiencia= Math.round(game.totAciertos*100)/game.intentos;
-             $juego.modal.puntuacion.mostrar(game.puntosMaximos, game.eficiencia, game.puntajeNow);
+             $juego.modal.puntuacion.mostrar(game.puntosMaximos, game.puntajeNow);
              $("#zona-play").hide();
              $("#zona-obj").show();
              game.intentos=0;
              game.totAciertos=0;
         },
         setCorrecto: function (){
+            game.cantTemp+=4;
             game.setEffect($(".img-start"),'good');
             // sumamos el puntaje
             $("#countPuntaje").text(game.puntajeNow += game.valorPts);
@@ -172,7 +191,7 @@ $(document).ready(function(){
       function(){
           ahorcado.cntx.lineWidth=5;
           ahorcado.cntx.lineCap="round";
-          ahorcado.cntx.strokeStyle="rgb(0, 0, 0)";
+          ahorcado.cntx.strokeStyle="rgb(225, 220, 222)";
           ahorcado.dibujarLinea(100,30,100,130);
           //seguna linea: horizontal
           ahorcado.dibujarLinea(100,30,160,30);
@@ -211,7 +230,7 @@ $(document).ready(function(){
       setError:function(){
         switch(ahorcado.errores){
           case 1:
-            ahorcado.cntx.strokeStyle="rgb(0, 0, 0)";
+            ahorcado.cntx.strokeStyle="rgb(225, 220, 222)";
             ahorcado.dibujarCara();
             ahorcado.errores++;
           break;
@@ -238,12 +257,13 @@ $(document).ready(function(){
             ahorcado.limCY=60;
             var intervalo = setInterval(function(){
               clearInterval(intervalo);
-              game.finishGame();
+              game.cantTemp=0;
             },1000)
 
           break;
         }
       },
+
       dibujarPies:function(right){
          if(right){
             ahorcado.dibujarLinea(160,90,150,100);
@@ -256,6 +276,7 @@ $(document).ready(function(){
     var operacion ={
       num1:0,
       num2:0,
+      posRes:2,
       numeroAleatorio: function(num){
         var numero = Math.round((Math.random()*num));
         return numero;
@@ -268,25 +289,30 @@ $(document).ready(function(){
     }
     $(".num").click(function(){
       text = $(this).text();
-      if($(".resp-operation").text().length<4){
-        $(".resp-operation").text(text+$(".resp-operation").text());
+      if(operacion.posRes>=0){
+        $($(".result-operation>td")[operacion.posRes]).text(text);
+          operacion.posRes--;
       }
     });
     $("#delete").click(function(){
-      if($(".resp-operation").text().length>0){
-        $(".resp-operation").text($(".resp-operation").text().substring(1,$(".resp-operation").text().length));
+      if(operacion.posRes>=-1 && operacion.posRes<2){//if para verificar que aún haya celdas disponibles para escribír
+        operacion.posRes++;
+        $($(".result-operation>td")[operacion.posRes]).text("_");
       }
     });
     $("#check").click(function(){
-      if($(".resp-operation").text().length>0){
-        if(operacion.check(parseInt($(".resp-operation").text()))){
+      var text=$(".result-operation>td").text();
+      text = text.substring(operacion.posRes+1,$(".result-operation>td").length);
+      if(text.length>0){
+        if(operacion.check(parseInt(text))){
           game.setCorrecto();
           game.setOperationNew();
         }else{
           game.setError();
           ahorcado.dibujarCara();
         }
-        $(".resp-operation").text("");
+        $(".result-operation>td").text("_");
+        operacion.posRes=2;
       }
 
     });

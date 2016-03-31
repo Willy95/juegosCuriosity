@@ -1,12 +1,10 @@
 var $juego = {
     modal : {
         puntuacion : {
-            mostrar : function(ptsMax, eficMax, ptsObt){
+            mostrar : function(ptsMax,ptsObt){
                 $("#modal-puntos-head").html("<b>"+ptsObt+" Puntos</b>");
                 $("#modal-puntos-max").html("<b>Puntaje Máximo : </b>" +ptsMax+" Pts");
-                $("#modal-eficiencia-max").html("<b>Eficiencia Máxima : </b>" +eficMax+"%");
                 $("#modal-puntos-now").html("<b>Puntaje Obtenido : </b>"+ptsObt+" Pts");
-                $("#modal-eficiencia-now").html("<b>Eficiencia Obtenida : </b>"+eficMax+"%");
                 $(".btnVideo").removeAttr('disabled');
                 $(".btnDownloadPDF").removeAttr('disabled');
                 $("#modalPrueba").modal('show');

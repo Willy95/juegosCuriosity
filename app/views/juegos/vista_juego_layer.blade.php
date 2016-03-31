@@ -35,11 +35,9 @@
                 <div class="row">
                   <div class="col-md-6">
                     <h4 id="modal-puntos-max"></h4>
-                    <h4 id="modal-eficiencia-max"></h4>
                   </div>
                   <div class="col-md-6">
                     <h4 id="modal-puntos-now"></h4>
-                    <h4 id="modal-eficiencia-now"></h4>
                   </div>
                 </div>
               </div>

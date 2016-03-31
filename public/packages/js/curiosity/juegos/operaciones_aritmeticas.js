@@ -203,7 +203,7 @@ $respuestas.on("click",".option",function(){
         if(tiempo == 0)
         {
             finishGame();
-            $juego.modal.puntuacion.mostrar(puntosMaximos,0, puntajeNow);
+            $juego.modal.puntuacion.mostrar(puntosMaximos, puntajeNow);
            puntajeNow=0;
         }else $("#temp-count").text(tiempo + "seg");
     }

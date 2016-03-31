@@ -149,9 +149,9 @@ $("#zona-play").hide();
 		//reiniciar puntuaje
 
         // Verificamos si el puntaje obtenido es mayor que el puntaje mayor actual
-        if(maxPtsTemp > puntosMaximos){
+        if(puntajeNow > puntosMaximos){
         // si el puntaje realizado es mayor que el [puntaje maximo], el puntaje maximo pasa a ser el puntaje realizado
-        puntosMaximos = maxPtsTemp;
+        puntosMaximos = puntajeNow;
         // Cambiamos el puntaje maximo en pantalla
         $("#num-max-pts").html(puntosMaximos + " pts");
         }
@@ -169,7 +169,7 @@ function cambiarSeg()
 
 		finishGame();
     // // mostramos alerta en pantalla
-    $juego.modal.puntuacion.mostrar(puntosMaximos, 0, puntajeNow);
+    $juego.modal.puntuacion.mostrar(puntosMaximos, puntajeNow);
 	  puntajeNow=0;
 	}
 

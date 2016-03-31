@@ -173,7 +173,7 @@ function calcOperacion_2(){
         $juego.setEficienciaMaxInicio(eficienciaNow);
       }
       // // mostramos alerta en pantalla
-      $juego.modal.puntuacion.mostrar(puntosMaximos, eficienciaMax, puntajeNow, eficienciaNow);
+      $juego.modal.puntuacion.mostrar(puntosMaximos,puntajeNow);
       // ocultamos la pantalla de juego
       $("#zona-play").attr('class', 'hidden');
       // mostramos la pantalla del objetivo
@@ -266,6 +266,7 @@ function calcOperacion_2(){
 // FUNCION A REALIZAR EN CADA OPCION SELECCIONADA ERRONEAMENRE
 // -----------------------------------------------------
   function setError(){
+    cantTemp-=3;
     // regresamos la cantidad de aciertos continuos a cero
     continuo = 0;
     // Regresamos el valor de los puntos por acirto a 100
@@ -290,6 +291,7 @@ function calcOperacion_2(){
 // FUNCION A REALIZAR EN CADA OPCION SELECCIONADA CORRECTAMENTE
 // ---------------------------------------------------------------------------
   function setCorrecto(){
+    cantTemp++;
     setCombo(valorPts);
     // sumamos el puntaje
     $("#countPuntaje").text(puntajeNow += valorPts);

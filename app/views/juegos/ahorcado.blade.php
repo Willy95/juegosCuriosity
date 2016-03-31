@@ -14,6 +14,9 @@
           <div id="zona-play">
             <div class="row">
               <div class="col-md-8 text-left">
+                <div class="temp">
+                  <h3><label id="temp-count"></label></h3>
+                </div>
               </div>
               <div class="col-md-4 text-right">
                 <div class="temp">
@@ -34,24 +37,33 @@
               <div class="col-md-5 second-part-game">
                 <!-- all operation here-->
                 <div class="zona-operation">
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                      <h1 class="first-operation">87</h1>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <h1 class="col-md-4 operation">+</h1>
-                    <div class="col-md-4">
-                      <h1 class="second-operation">32</h1>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                    <h1 class="resp-operation"></h1>
-                    </div>
-                  </div>
+                  <h2 class="fa fa-plus"></h2>
+                  <table class="operation">
+                    <thead>
+                      <tr>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>U</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="first-operation">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr class="second-operation">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr class="result-operation">
+                        <td>_</td>
+                        <td>_</td>
+                        <td>_</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div class="zona-numeros row">
                   <div class="col-md-10 numeros">

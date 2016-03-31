@@ -205,7 +205,7 @@ function calcOperacion_2(){
         $juego.setEficienciaMaxInicio(eficienciaNow);
       }
       // // mostramos alerta en pantalla
-      $juego.modal.puntuacion.mostrar(puntosMaximos, eficienciaMax, puntajeNow, eficienciaNow);
+      $juego.modal.puntuacion.mostrar(puntosMaximos, puntajeNow);
       // ocultamos la pantalla de juego
       $("#zona-play").attr('class', 'hidden');
       // mostramos la pantalla del objetivo

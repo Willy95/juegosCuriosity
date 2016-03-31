@@ -39,22 +39,25 @@
                     <li class=""><i class="fa fa-star"></i> Nivel 7 </li>
                     <li class=""><i class="fa fa-star"></i> Nivel 8 </li>
                     <li class=""><i class="fa fa-star"></i> Nivel 9 </li>
-                    <li class=""><i class="fa fa-star"></i> Nivel 10 </li>
                   </ul>
                   <ul class="dificult-list">
-                    <li class="active"><i class="fa fa-check-square-o"></i> Fácil</li>
-                    <li><i class="fa"></i> Dificil</li>
+                    <li class="active"><i class="fa fa-check-square-o"></i> Practica</li>
+                    <li><i class="fa"></i> Actividad</li>
                   <ul>
                 </div>
             </div>
             <div class="btn-instrucciones">
-              <button class="btn btn-warning hidden-xs"><i class="fa fa-paper-plane-o"></i> Omitir</button>
-              <button class="btn btn-warning hidden-xs" id="btn-advice-next"><i class="fa fa-share"></i> siguiente</button>
-              <button class="btn btn-warning btn-comenzar hidden-xs hidden">Comenzar juego</button>
-              <button class="btn btn-xs btn-warning btn-omitir visible-xs"><i class="fa fa-paper-plane-o"></i></button>
-              <button class="btn btn-xs btn-warning visible-xs btn-advice-next" id="btn-advice-next"><i class="fa fa-share"></i></button>
-              <button class="btn btn-xs btn-warning btn-comenzar hidden-xs visible-xs"><i class="fa fa-play"></i></button>
-
+              <div class="first-button">
+                <button class="btn btn-warning hidden-xs"><i class="fa fa-paper-plane-o"></i> Omitir</button>
+                <button class="btn btn-warning hidden-xs btn-advice-next"><i class="fa fa-share"></i> siguiente</button>
+                <button class="btn btn-xs btn-warning visible-xs"><i class="fa fa-paper-plane-o"></i></button>
+                <button class="btn btn-xs btn-warning visible-xs btn-advice-next"><i class="fa fa-share"></i></button>
+              </div>
+              <div class="second-button">
+                <button class="btn btn-xs btn-warning btn-comenzar visible-xs"><i class="fa fa-play"></i></button>
+                 <button class="btn btn-warning btn-comenzar hidden-xs">Comenzar juego</button>
+                <button class="btn btn-xs btn-warning btn-comenzar visible-xs"><i class="fa fa-play"></i></button>
+              </div>
             </div>
            </div>
            <div  class="bur">
