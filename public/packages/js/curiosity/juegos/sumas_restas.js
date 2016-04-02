@@ -351,11 +351,11 @@ function calcOperacion_2(){
         }
         // si la cantidad de aciertos continuos es igual a 10 se asigna un nuevo valor a los puntos por acierto
         if(continuo == 10){
-          valorPts = 250;
+          valorPts = 200;
         }
         // si la cantidad de aciertos continuos es igual a 15 se asigna un nuevo valor a los puntos por acierto
         if(continuo == 15){
-          valorPts = 500;
+          valorPts = 250;
         }
       }
     }

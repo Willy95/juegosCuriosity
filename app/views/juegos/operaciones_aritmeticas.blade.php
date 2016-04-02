@@ -7,7 +7,7 @@
 @stop
 @section('juego')
          <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->
-         <audio src="{{asset('packages/sounds/fondo.mp3')}}" loop="true" id="sound-fondo"></audio>
+         <audio src="{{asset('packages/sounds/juegos/fondo.mp3')}}" loop="true" id="sound-fondo"></audio>
            <div id="zona-play">
             <div class="row">
               <div class="col-md-12 text-right">

@@ -57,7 +57,7 @@ $(".zona-play").hide();
     function changeBg()
     {
         var index = numeroAleatorio(2)+1;
-        $(".zona-juego").css("background-image","url(/packages/images/games/operaciones-aritmeticas/"+index+".jpg)");
+        $(".zona-juego").css("background-image","url(/packages/images/games/"+index+".jpg)");
     }
 //--------------Comenzar zona de juego y ocultar zona de objetivo--------------
     function comenzarJuego(){
@@ -132,7 +132,7 @@ $(".zona-play").hide();
             var datos = ["+","-","*","/"];
             for(var i =0;i<=3;i++){
 
-                $respuestas.children().last().append($("<img  class='img-responsive option' src='packages/images/games/operaciones-aritmeticas/"+simboles[i]+".png'/>"));
+                $respuestas.children().last().append($("<img  class='img-responsive option' src='packages/images/games/"+simboles[i]+".png'/>"));
                 $($(".option")[i]).data("valor",datos[i]);
             }
         }

@@ -11,9 +11,9 @@
 @section('juego')
 
           <!-- SECCION DONDE SE DESARROLLARÁ EL JUEGO EN SI -->
-          <audio id="sound-correct" src="{{asset('/packages/sounds/correct.mp3')}}"></audio>
-          <audio id="sound-correct1" src="{{asset('/packages/sounds/correct1.mp3')}}"></audio>
-          <audio id="sound-error" src="{{asset('/packages/sounds/error.mp3')}}"></audio>
+          <audio id="sound-correct" src="{{asset('/packages/sounds/juegos/correct.mp3')}}"></audio>
+          <audio id="sound-correct1" src="{{asset('/packages/sounds/juegos/correct1.mp3')}}"></audio>
+          <audio id="sound-error" src="{{asset('/packages/sounds/juegos/error.mp3')}}"></audio>
           <div id="zona-play">
             <div class="modal-instrucciones-game">
             <div class="container-instrucciones">
